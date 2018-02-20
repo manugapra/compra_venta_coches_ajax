@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2018 a las 12:28:56
+-- Tiempo de generación: 20-02-2018 a las 12:42:23
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -208,6 +208,16 @@ ALTER TABLE `venta`
   ADD KEY `vehiculo` (`vehiculo`),
   ADD KEY `cliente` (`cliente`),
   ADD KEY `empleado` (`empleado`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `vehiculos`
+--
+ALTER TABLE `vehiculos`
+  MODIFY `id_v` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
