@@ -1,0 +1,305 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Compra / Venta de Vehículos</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="css/plantilla.css">
+</head>
+<body>
+
+	<div class="container">
+		<h1>Compra/Venta Vehículos</h1>
+			<div class="row">
+				<!--LATERAL IZQUIERDO-->
+				<div class="col-sm-3">
+						<!--Menu-->
+				<div class="well well-sm">
+					<button type="button" class="btn btn-primary btn-block" id="btnInicio">Inicio</button>
+					<button type="button" class="btn btn-primary btn-block" id="btnAltaProveedor">Alta Proveedor</button>
+					<button type="button" class="btn btn-primary btn-block" id="btnAltaEmpleado">Alta Empleado</button>
+					<button type="button" class="btn btn-primary btn-block" id="btnAltaVehiculo">Alta Vehículo</button>
+					<button type="button" class="btn btn-primary btn-block" id="btnAltaCliente">Alta Cliente</button>
+					<button type="button" class="btn btn-primary btn-block" id="btnRegistrarVenta">Registrar Venta</button>
+					<button type="button" class="btn btn-primary btn-block" id="btnRegistrarCompra">Registrar Compra</button>
+					<button type="button" class="btn btn-primary btn-block" id="btnRegistrarReparacion">Registrar Reparación</button>
+
+				</div>
+
+
+				</div>
+
+
+
+				<!--FORMULARIOS-->
+				<div class="col-sm-6">
+					<div id="mensaje"></div>
+					<form name="formAltaProv" id="formAltaProv" class="formulario">
+						<h3>Alta proveedor</h3>
+							<div class="form-group">
+						   		<label>CIF</label>
+						   		<input type="text" class="form-control" id="cifProv">
+						    </div>
+						  	<div class="form-group">
+						   		<label>Nombre</label>
+						   		<input type="text" class="form-control" id="nomProv">
+						    </div>
+						    <div class="form-group">
+						   		<label>Dirección</label>
+						   		<input type="text" class="form-control" id="dirProv">
+						    </div>
+						       <div class="form-group">
+						   		<label>Teléfono</label>
+						   		<input type="text" class="form-control" id="telProv">
+						    </div>
+						  
+						  	<input type="button" class="btn btn-default" id="btnEnviarAltaProveedor" value="Enviar">
+						  	<button type="reset" class="btn btn-danger">Limpiar</button>
+					</form> 
+
+					<form id="formAltaEmpleado" class="formulario">
+						<h3>Alta Empleado</h3>
+							<div class="form-group">
+						   		<label>DNI</label>
+						   		<input type="text" class="form-control" id="dniEmp">
+						    </div>
+						  	<div class="form-group">
+						   		<label>Nombre</label>
+						   		<input type="text" class="form-control" id="nomEmp">
+						    </div>
+						    <div class="form-group">
+						   		<label>Apellidos</label>
+						   		<input type="text" class="form-control" id="apeEmp">
+						    </div>
+						       
+						       	<div class="form-group">
+						   		<label>Salario</label>
+						   		<input type="text" class="form-control" id="salEmp">
+						    </div>
+						  
+						<input type="button" class="btn btn-default" id="btnEnviarAltaEmpleado" value="Enviar">
+						<button type="reset" class="btn btn-danger">Limpiar</button>
+					</form> 
+
+					<form id="formAltaVeh" class="formulario">
+						<h3>Alta Vehículo</h3>
+							<div class="form-group">
+						   		<label>Matrícula</label>
+						   		<input type="text" class="form-control" id="matVehiculo">
+						    </div>
+						  	<div class="form-group">
+						   		<label>Marca</label>
+						   		<input type="text" class="form-control" id="marcaVehiculo">
+						    </div>
+						    <div class="form-group">
+						   		<label>Modelo</label>
+						   		<input type="text" class="form-control" id="modVehiculo">
+						    </div>
+						    <div class="form-group">
+						   		<label>Tasación</label>
+						   		<input type="text" class="form-control" id="tasVehiculo">
+						    </div>
+						    <div class="form-group">
+						   		<label>Combustible</label>
+						   		<input type="text" class="form-control" id="combVehiculo">
+						    </div>
+						    <div class="form-group">
+						   		<label>Plazas</label>
+						   		<input type="text" class="form-control" id="plazasVehiculo">
+						    </div>
+						    <div class="radio">
+								<label><input type="radio" id="radioCoche" name="tipoVehiculo" value="coche">Coche</label>
+								<label><input type="radio" id="radioCamion" name="tipoVehiculo" value="camion">Camión</label>
+							</div>
+							<div id="tipoCoche">
+								<div class="form-group">
+							   		<label>Número de puertas</label>
+							   		<input type="text" class="form-control" id="nPuertasCoche">
+								</div>
+								<div class="form-group">
+									<label>Tapicería</label>
+									<input type="text" class="form-control" id="tapiceriaCoche">
+								</div>
+								<div class="form-group">
+									<label>Tipo de Coche</label>
+									<input type="text" class="form-control" id="tpCoche">
+								</div>
+							</div>
+							<div id="tipoCamion">
+								<div class="form-group">
+						   			<label>Carga Máxima</label>
+						   			<input type="text" class="form-control" id="cargaCamion">
+								</div>
+								<div class="form-group">
+								   	<label>Tipo de carga</label>
+								   	<input type="text" class="form-control" id="tipoCargaCamion">
+								</div>
+								<div class="form-group">
+								   	<label>Capacidad de Combustible</label>
+								   	<input type="text" class="form-control" id="capCombCamion">
+								</div>
+							</div>
+					  
+					  	<input type="button" class="btn btn-default" id="btnEnviarAltaVehiculo" value="Enviar">
+					  	<button type="reset" class="btn btn-danger">Limpiar</button>
+					</form> 
+
+					<form id="formAltaCli" class="formulario">
+						<h3>Alta Cliente</h3>
+							<div class="form-group">
+						   		<label>DNI</label>
+						   		<input type="text" class="form-control" id="dniCliente">
+						    </div>
+						  	
+						    <div class="form-group">
+						   		<label>Nombre</label>
+						   		<input type="text" class="form-control" id="nomCliente">
+						    </div>
+						    <div class="form-group">
+						   		<label>Apellidos</label>
+						   		<input type="text" class="form-control" id="apCliente">
+						    </div>
+						    <div class="form-group">
+						   		<label>Teléfono</label>
+						   		<input type="text" class="form-control" id="telCliente">
+						    </div>
+						  
+						  	<input type="button" class="btn btn-default" id="btnEnviarAltaCliente" value="Enviar">
+						  	<button type="reset" class="btn btn-danger">Limpiar</button>
+					</form> 
+
+						<form id="formRegVenta" class="formulario">
+						<h3>Registrar venta</h3>
+							<div class="form-group">
+						   		<label>Vehículo</label>
+						   		<select class="form-control" id="selectVentaVehiculo">
+						   		</select>
+						    </div>
+						  	
+						    <div class="form-group">
+						   		<label>Cliente</label>
+						   		<select class="form-control" id="selectVentaCliente">
+						   		</select>
+						    </div>
+						  
+						    <div class="form-group">
+						   		<label>Empleado</label>
+						   		<select class="form-control" id="selectVentaEmp">
+						   		</select>
+						    </div>
+						    <div class="form-group">
+						   		<label>Importe</label>
+						   		<input type="text" size="5" class="form-control" id="importeVentaVehiculo">
+						    </div>
+						    <div class="form-group">
+						   		<label>Fecha</label>
+						   		<input type="text" class="form-control" id="fechaVentaVehiculo">
+						    </div>
+						    <div class="form-group">
+						   		<label>Observaciones</label>
+						   		<textarea type="text" class="form-control" id="observVentaVehiculo"></textarea>
+						    </div>
+
+						  
+						  	<input type="button" class="btn btn-default" id="btnEnviarVenta" value="Enviar">
+						  	<button type="reset" class="btn btn-danger">Limpiar</button>
+					</form> 
+
+					<form id="formRegCompra" class="formulario">
+						<h3>Registrar compra</h3>
+							<div class="form-group">
+						   		<label>Vehículo</label>
+						   		<select class="form-control" id="selectCompraVehiculo">
+						   		</select>
+						    </div>
+						  	
+						    <div class="form-group">
+						   		<label>Importe</label>
+						   		<input type="text" size="5" class="form-control" id="importeCompraVehiculo">
+						    </div>
+						    <div class="form-group">
+						   		<label>Fecha</label>
+						   		<input type="text" class="form-control" id="fechaCompraVehiculo">
+						    </div>
+						  	<div class="form-group">
+						   		<label>Proveedor</label>
+						   		<select class="form-control" id="selectCompraProv">
+						   		</select>
+						    </div>
+						    <div class="form-group">
+						   		<label>Empleado</label>
+						   		<select class="form-control" id="selectCompraEmp">
+						   		</select>
+						    </div>
+						    <div class="form-group">
+						   		<label>Observaciones</label>
+						   		<textarea type="text" class="form-control" id="observCompraVehiculo"></textarea>
+						    </div>
+
+						  
+						  	<input type="button" class="btn btn-default" id="btnEnviarCompra" value="Enviar">
+						  	<button type="reset" class="btn btn-danger">Limpiar</button>
+					</form> 
+
+					<form id="formRegReparacion" class="formulario">
+						<h3>Registrar Reparación</h3>
+							<div class="form-group">
+						   		<label>Vehículo</label>
+						   		<select class="form-control" id="selectRepVehiculo">
+						   		</select>
+						    </div>
+
+						    <div class="form-group">
+						   		<label>Descripción</label>
+						   		<textarea type="text" class="form-control" id="descRepVehiculo"></textarea>
+						    </div>
+						  	
+						    <div class="form-group">
+						   		<label>Coste</label>
+						   		<input type="text" size="5" class="form-control" id="costeRepVehiculo">
+						    </div>
+					
+						    
+
+						  
+						  	<input type="button" class="btn btn-default" id="btnEnviarReparacion" value="Enviar">
+						  	<button type="reset" class="btn btn-danger">Limpiar</button>
+					</form> 
+
+					<div class="listas" id="listas">
+						<!-- LISTAS AQUÍ -->
+					</div>
+
+
+
+
+				</div>
+
+
+
+				<!--LATERAL DERECHO-->
+				<div class="col-sm-3">
+					
+					<div class="well well-sm">
+						<button type="button" class="btn btn-primary btn-block" id="btnListarProveedores">Listar Proveedores</button>
+						<button type="button" class="btn btn-primary btn-block" id="btnListarEmpleados">Listar Empleados</button>
+						<button type="button" class="btn btn-primary btn-block" id="btnListarVehiculos">Listar Vehículos</button>
+						<button type="button" class="btn btn-primary btn-block" id="btnListarClientes">Listar Clientes</button>
+						<button type="button" class="btn btn-primary btn-block" id="btnListarVentas">Listar Ventas</button>
+						<button type="button" class="btn btn-primary btn-block" id="btnListarCompras">Listar Compras</button>
+						<button type="button" class="btn btn-primary btn-block" id="btnListarReparaciones">Listar Reparaciónes</button>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/objeto.js"></script>
+	<script type="text/javascript" src="js/codigo.js"></script>
+
+</body>
+</html> 

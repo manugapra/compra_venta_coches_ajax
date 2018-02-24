@@ -1,0 +1,23 @@
+.error{
+	background-color: yellow;
+}
+
+.formulario {
+	display:none;
+}
+#tipoCoche, #tipoCamion{
+	display:none;
+}
+.listas{
+	display:none;
+}
+
+textarea{
+	resize: none;
+}
+td{
+	padding:10px;
+}
+th{
+	padding:10px;
+}
