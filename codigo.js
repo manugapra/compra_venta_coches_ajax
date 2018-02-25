@@ -5,6 +5,7 @@ $('#btnInicio').click(inicio);
 function inicio()
 {
 	$("form").hide("normal");
+	$("#mensaje").empty();
 }
 
 
@@ -18,15 +19,17 @@ function cargaAltaProveedor()
     // Verifico si ya he cargado el formulario antes
     if ($('#formAltaProv').size() == 0) {
    // if (!bEncontrado) {
-    	$("<div>").appendTo('#mensaje').load("altaProveedor/frmAltaProveedor.html",
+    	$("<div>").appendTo('#formularios').load("altaProveedor/frmAltaProveedor.html",
             function() {
                 $.getScript("altaProveedor/altaProveedor.js");
             });
-    	$('#formAltaProv').show("normal");
+		$('#formAltaProv').show("normal");
+		$('#mensaje').empty();
 
     } else {
         // Lo muestro si está oculto
-       $('#formAltaProv').show("normal");
+	   $('#formAltaProv').show("normal");
+	   $("#mensaje").empty();
     }
 }
 
@@ -40,15 +43,17 @@ function cargaAltaEmpleado()
     // Verifico si ya he cargado el formulario antes
     if ($('#formAltaEmpleado').size() == 0) {
    // if (!bEncontrado) {
-    	$("<div>").appendTo('#mensaje').load("altaEmpleado/frmAltaEmpleado.html",
+    	$("<div>").appendTo('#formularios').load("altaEmpleado/frmAltaEmpleado.html",
             function() {
                 $.getScript("altaEmpleado/altaEmpleado.js");
             });
-    	$('#formAltaEmpleado').show("normal");
+		$('#formAltaEmpleado').show("normal");
+		$("#mensaje").empty();
 
     } else {
         // Lo muestro si está oculto
-       $('#formAltaEmpleado').show("normal");
+	   $('#formAltaEmpleado').show("normal");
+	   $("#mensaje").empty();
     }
 }
 
@@ -62,15 +67,17 @@ function cargaAltaVehiculo()
     // Verifico si ya he cargado el formulario antes
     if ($('#formAltaVeh').size() == 0) {
    // if (!bEncontrado) {
-    	$("<div>").appendTo('#mensaje').load("altaVehiculo/frmAltaVehiculo.html",
+    	$("<div>").appendTo('#formularios').load("altaVehiculo/frmAltaVehiculo.html",
             function() {
                 $.getScript("altaVehiculo/altaVehiculo.js");
             });
-    	$('#formAltaVeh').show("normal");
+		$('#formAltaVeh').show("normal");
+		$("#mensaje").empty();
 
     } else {
         // Lo muestro si está oculto
-       $('#formAltaVeh').show("normal");
+	   $('#formAltaVeh').show("normal");
+	   $("#mensaje").empty();
     }
 
 }
@@ -86,15 +93,17 @@ function cargaAltaCliente()
     // Verifico si ya he cargado el formulario antes
     if ($('#formAltaCli').size() == 0) {
    // if (!bEncontrado) {
-    	$("<div>").appendTo('#mensaje').load("altaCliente/frmAltaCliente.html",
+    	$("<div>").appendTo('#formularios').load("altaCliente/frmAltaCliente.html",
             function() {
                 $.getScript("altaCliente/altaCliente.js");
             });
-    	$('#formAltaCli').show("normal");
+		$('#formAltaCli').show("normal");
+		$("#mensaje").empty();
 
     } else {
         // Lo muestro si está oculto
-       $('#formAltaCli').show("normal");
+	   $('#formAltaCli').show("normal");
+	   $("#mensaje").empty();
     }
 
 }
@@ -109,15 +118,17 @@ function cargaRegistrarVenta()
     // Verifico si ya he cargado el formulario antes
     if ($('#formRegVenta').size() == 0) {
    // if (!bEncontrado) {
-    	$("<div>").appendTo('#mensaje').load("registrarVenta/frmRegistrarVenta.html",
+    	$("<div>").appendTo('#formularios').load("registrarVenta/frmRegistrarVenta.html",
             function() {
                 $.getScript("registrarVenta/registrarVenta.js");
             });
-    	$('#formRegVenta').show("normal");
+		$('#formRegVenta').show("normal");
+		$("#mensaje").empty();
 
     } else {
         // Lo muestro si está oculto
-       $('#formRegVenta').show("normal");
+	   $('#formRegVenta').show("normal");
+	   $("#mensaje").empty();
     }
 
 }
@@ -134,7 +145,7 @@ function cargaRegistrarCompra()
     // Verifico si ya he cargado el formulario antes
     if ($('#formRegCompra').size() == 0) {
    // if (!bEncontrado) {
-    	$("<div>").appendTo('#mensaje').load("registrarCompra/frmRegistrarCompra.html",
+    	$("<div>").appendTo('#formularios').load("registrarCompra/frmRegistrarCompra.html",
             function() {
                 $.getScript("registrarCompra/registrarCompra.js");
             });
@@ -157,7 +168,7 @@ function cargaRegistrarReparacion()
     // Verifico si ya he cargado el formulario antes
     if ($('#formRegReparacion').size() == 0) {
    // if (!bEncontrado) {
-    	$("<div>").appendTo('#mensaje').load("registrarReparacion/frmRegistrarReparacion.html",
+    	$("<div>").appendTo('#formularios').load("registrarReparacion/frmRegistrarReparacion.html",
             function() {
                 $.getScript("registrarReparacion/registrarReparacion.js");
             });

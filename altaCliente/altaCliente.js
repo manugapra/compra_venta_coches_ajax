@@ -23,7 +23,7 @@ if (validarAltaCli())
 		sMensaje = cvCoches.altaCliente(oCliente);
         //altaCliente();
 	//}
-
+	
 	alert(sMensaje);
 	inicio();
 	}
