@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2018 a las 12:42:23
--- Versión del servidor: 10.1.30-MariaDB
--- Versión de PHP: 7.2.2
+-- Tiempo de generación: 25-02-2018 a las 20:06:01
+-- Versión del servidor: 10.1.29-MariaDB
+-- Versión de PHP: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48,6 +48,14 @@ CREATE TABLE `clientes` (
   `telefono` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`dni`, `nombre`, `apellidos`, `telefono`) VALUES
+('65478123G', 'manuel', 'pedraza', 678954123),
+('98564132', 'ana', 'rosales', 789546123);
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +68,14 @@ CREATE TABLE `coche` (
   `tipocoche` varchar(30) NOT NULL,
   `id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `coche`
+--
+
+INSERT INTO `coche` (`num_puertas`, `tapiceria`, `tipocoche`, `id`) VALUES
+(5, 'cuero', 'turismo', 1),
+(5, 'tela', 'turismo', 2);
 
 -- --------------------------------------------------------
 
@@ -90,6 +106,14 @@ CREATE TABLE `empleados` (
   `salario` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `empleados`
+--
+
+INSERT INTO `empleados` (`dni`, `nombre`, `apellidos`, `num_ventas`, `salario`) VALUES
+('12345678A', 'diego', 'gonzalez', 5, 1500),
+('21345678B', 'fabian', 'alfaro', 10, 1250);
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +126,14 @@ CREATE TABLE `proveedor` (
   `direccion` varchar(50) NOT NULL,
   `telefono` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`cif`, `nombre`, `direccion`, `telefono`) VALUES
+('A12345678', 'luis', 'dos hermanas', 765468534),
+('B12345678', 'antonio', 'alcala', 678945123);
 
 -- --------------------------------------------------------
 
@@ -130,6 +162,14 @@ CREATE TABLE `vehiculos` (
   `plazas` int(2) NOT NULL,
   `id_v` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `vehiculos`
+--
+
+INSERT INTO `vehiculos` (`matricula`, `marca`, `modelo`, `tasacion`, `combustible`, `plazas`, `id_v`) VALUES
+('1234BFG', 'seat', 'leon', 5000, 'diesel', 5, 1),
+('2413JGF', 'skoda', 'fabia', 3200, 'diesel', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -217,7 +257,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id_v` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_v` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
