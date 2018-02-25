@@ -1,53 +1,401 @@
 var cvCoches = new CVCoches();
 
+$('#btnInicio').click(inicio);
+
+function inicio()
+{
+	$("form").hide("normal");
+	$("#mensaje").empty();
+}
+
+
+$('#btnAltaProveedor').click(cargaAltaProveedor);
+
+function cargaAltaProveedor()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formAltaProv')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formAltaProv').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("./altaProveedor/frmAltaProveedor.html",
+            function() {
+                $.getScript("./altaProveedor/altaProveedor.js");
+            });
+		$('#formAltaProv').show("normal");
+		$('#mensaje').empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formAltaProv').show("normal");
+	   $("#mensaje").empty();
+    }
+}
+
+$('#btnEditarProveedor').click(cargaEditarProveedor);
+
+function cargaEditarProveedor()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formEditarProv')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formEditarProv').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("editarProveedor/frmEditarProveedor.html",
+            function() {
+                $.getScript("editarProveedor/editarProveedor.js");
+            });
+		$('#formEditarProv').show("normal");
+		$('#mensaje').empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formEditarProv').show("normal");
+	   $("#mensaje").empty();
+    }
+}
+
+$('#btnAltaEmpleado').click(cargaAltaEmpleado);
+
+function cargaAltaEmpleado()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formAltaEmpleado')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formAltaEmpleado').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("altaEmpleado/frmAltaEmpleado.html",
+            function() {
+                $.getScript("altaEmpleado/altaEmpleado.js");
+            });
+		$('#formAltaEmpleado').show("normal");
+		$("#mensaje").empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formAltaEmpleado').show("normal");
+	   $("#mensaje").empty();
+    }
+}
+
+$('#btnEditarEmpleado').click(cargaEditarEmpleado);
+
+function cargaEditarEmpleado()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formEditarEmp')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formEditarEmp').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("editarEmpleado/frmEditarEmpleado.html",
+            function() {
+                $.getScript("editarEmpleado/editarEmpleado.js");
+            });
+		$('#formEditarEmp').show("normal");
+		$('#mensaje').empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formEditarEmp').show("normal");
+	   $("#mensaje").empty();
+    }
+}
+
+$('#btnAltaVehiculo').click(cargaAltaVehiculo);
+
+function cargaAltaVehiculo()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formAltaVeh')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formAltaVeh').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("altaVehiculo/frmAltaVehiculo.html",
+            function() {
+                $.getScript("altaVehiculo/altaVehiculo.js");
+            });
+		$('#formAltaVeh').show("normal");
+		$("#mensaje").empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formAltaVeh').show("normal");
+	   $("#mensaje").empty();
+    }
+
+}
+
+$('#btnEditarVehiculo').click(cargaEditarVehiculo);
+
+function cargaEditarVehiculo()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formEditarVeh')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formEditarVeh').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("editarVehiculo/frmEditarVehiculo.html",
+            function() {
+                $.getScript("editarVehiculo/editarVehiculo.js");
+            });
+		$('#formEditarVeh').show("normal");
+		$('#mensaje').empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formEditarVeh').show("normal");
+	   $("#mensaje").empty();
+    }
+}
+
+
+$('#btnAltaCliente').click(cargaAltaCliente);
+
+function cargaAltaCliente()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formAltaCli')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formAltaCli').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("altaCliente/frmAltaCliente.html",
+            function() {
+                $.getScript("altaCliente/altaCliente.js");
+            });
+		$('#formAltaCli').show("normal");
+		$("#mensaje").empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formAltaCli').show("normal");
+	   $("#mensaje").empty();
+    }
+
+}
+
+$('#btnEditarCliente').click(cargaEditarCliente);
+
+function cargaEditarCliente()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formEditarCli')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formEditarCli').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("editarCliente/frmEditarCliente.html",
+            function() {
+                $.getScript("editarCliente/editarCliente.js");
+            });
+		$('#formEditarCli').show("normal");
+		$('#mensaje').empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formEditarCli').show("normal");
+	   $("#mensaje").empty();
+    }
+}
+
+$('#btnRegistrarVenta').click(cargaRegistrarVenta);
+
+function cargaRegistrarVenta()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formRegVenta')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formRegVenta').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("registrarVenta/frmRegistrarVenta.html",
+            function() {
+                $.getScript("registrarVenta/registrarVenta.js");
+            });
+		$('#formRegVenta').show("normal");
+		$("#mensaje").empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formRegVenta').show("normal");
+	   $("#mensaje").empty();
+    }
+
+}
+
+$('#btnEditarVenta').click(cargaEditarVenta);
+
+function cargaEditarVenta()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formEditarVenta')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formEditarVenta').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("editarVenta/frmEditarVenta.html",
+            function() {
+                $.getScript("editarVenta/editarVenta.js");
+            });
+		$('#formEditarVenta').show("normal");
+		$('#mensaje').empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formEditarVenta').show("normal");
+	   $("#mensaje").empty();
+    }
+}
+
+
+
+$('#btnRegistrarCompra').click(cargaRegistrarCompra);
+
+function cargaRegistrarCompra()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formRegCompra')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formRegCompra').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("registrarCompra/frmRegistrarCompra.html",
+            function() {
+                $.getScript("registrarCompra/registrarCompra.js");
+            });
+    	$('#formRegCompra').show("normal");
+
+    } else {
+        // Lo muestro si está oculto
+       $('#formRegCompra').show("normal");
+    }
+
+}
+
+$('#btnEditarCompra').click(cargaEditarCompra);
+
+function cargaEditarCompra()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formEditarCompra')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formEditarCompra').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("editarCompra/frmEditarCompra.html",
+            function() {
+                $.getScript("editarCompra/editarCompra.js");
+            });
+		$('#formEditarCompra').show("normal");
+		$('#mensaje').empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formEditarCompra').show("normal");
+	   $("#mensaje").empty();
+    }
+}
+
+$('#btnRegistrarReparacion').click(cargaRegistrarReparacion);
+
+function cargaRegistrarReparacion()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formRegReparacion')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formRegReparacion').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("registrarReparacion/frmRegistrarReparacion.html",
+            function() {
+                $.getScript("registrarReparacion/registrarReparacion.js");
+            });
+    	$('#formRegReparacion').show("normal");
+
+    } else {
+        // Lo muestro si está oculto
+       $('#formRegReparacion').show("normal");
+    }
+
+}
+
+$('#btnEditarReparacion').click(cargaEditarReparacion);
+
+function cargaEditarReparacion()
+{
+	// Oculto todos los formularios menos este
+    $("form:not('#formEditarReparacion')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#formEditarReparacion').size() == 0) {
+   // if (!bEncontrado) {
+    	$("<div>").appendTo('#formularios').load("editarReparacion/frmEditarReparacion.html",
+            function() {
+                $.getScript("editarReparacion/editarReparacion.js");
+            });
+		$('#formEditarReparacion').show("normal");
+		$('#mensaje').empty();
+
+    } else {
+        // Lo muestro si está oculto
+	   $('#formEditarReparacion').show("normal");
+	   $("#mensaje").empty();
+    }
+}
 //BOTONES PARA MOSTRAR FORMULARIOS
 
-var oBtnAltaProveedor= document.getElementById("btnAltaProveedor");
-oBtnAltaProveedor.addEventListener("click",altaProveedor,false);
+/*var oBtnAltaProveedor= document.getElementById("btnAltaProveedor");
+oBtnAltaProveedor.addEventListener("click",altaProveedor,false);*/
 
-var oBtnAltaInicio= document.getElementById("btnInicio");
-oBtnAltaInicio.addEventListener("click",ocultarFormularios,false);
+/*var oBtnAltaInicio= document.getElementById("btnInicio");
+oBtnAltaInicio.addEventListener("click",ocultarFormularios,false);*/
 
-var oBtnAltaEmpleado= document.getElementById("btnAltaEmpleado");
-oBtnAltaEmpleado.addEventListener("click",altaEmpleado,false);
+/*var oBtnAltaEmpleado= document.getElementById("btnAltaEmpleado");
+oBtnAltaEmpleado.addEventListener("click",altaEmpleado,false);*/
 
-var oBtnAltaVehiculo= document.getElementById("btnAltaVehiculo");
-oBtnAltaVehiculo.addEventListener("click",altaVehiculo,false);
+/*var oBtnAltaVehiculo= document.getElementById("btnAltaVehiculo");
+oBtnAltaVehiculo.addEventListener("click",altaVehiculo,false);*/
 
-var oBtnAltaCliente= document.getElementById("btnAltaCliente");
-oBtnAltaCliente.addEventListener("click",altaCliente,false);
+/*var oBtnAltaCliente= document.getElementById("btnAltaCliente");
+oBtnAltaCliente.addEventListener("click",altaCliente,false);*/
 
-var oBtnRegCompra= document.getElementById("btnRegistrarCompra");
-oBtnRegCompra.addEventListener("click",mostrarRegistrarCompra,false);
+/*var oBtnRegCompra= document.getElementById("btnRegistrarCompra");
+oBtnRegCompra.addEventListener("click",mostrarRegistrarCompra,false);*/
 
-var oBtnRegVenta= document.getElementById("btnRegistrarVenta");
-oBtnRegVenta.addEventListener("click",mostrarRegistrarVenta,false);
+/*var oBtnRegVenta= document.getElementById("btnRegistrarVenta");
+oBtnRegVenta.addEventListener("click",mostrarRegistrarVenta,false);*/
 
-var oBtnRegRep= document.getElementById("btnRegistrarReparacion");
-oBtnRegRep.addEventListener("click",mostrarRegistrarRep,false);
+/*var oBtnRegRep= document.getElementById("btnRegistrarReparacion");
+oBtnRegRep.addEventListener("click",mostrarRegistrarRep,false);*/
 
 //BOTONES ALTAS DE LOS FORMULARIOS
 
-var oBtnEnviarAltaProveedor = document.getElementById("btnEnviarAltaProveedor");
-oBtnEnviarAltaProveedor.addEventListener("click", enviarAltaProveedor, false);
+/*var oBtnEnviarAltaProveedor = document.getElementById("btnEnviarAltaProveedor");
+oBtnEnviarAltaProveedor.addEventListener("click", enviarAltaProveedor, false);*/
 
-var oBtnEnviarAltaEmpleado = document.getElementById("btnEnviarAltaEmpleado");
-oBtnEnviarAltaEmpleado.addEventListener("click", enviarAltaEmpleado, false);
+/*var oBtnEnviarAltaEmpleado = document.getElementById("btnEnviarAltaEmpleado");
+oBtnEnviarAltaEmpleado.addEventListener("click", enviarAltaEmpleado, false);*/
 
-var oBtnEnviarAltaVehiculo = document.getElementById("btnEnviarAltaVehiculo");
-oBtnEnviarAltaVehiculo.addEventListener("click", enviarAltaVehiculo, false);
+/*var oBtnEnviarAltaVehiculo = document.getElementById("btnEnviarAltaVehiculo");
+oBtnEnviarAltaVehiculo.addEventListener("click", enviarAltaVehiculo, false);*/
 
-var oBtnEnviarAltaCliente = document.getElementById("btnEnviarAltaCliente");
-oBtnEnviarAltaCliente.addEventListener("click", enviarAltaCliente, false);
+/*var oBtnEnviarAltaCliente = document.getElementById("btnEnviarAltaCliente");
+oBtnEnviarAltaCliente.addEventListener("click", enviarAltaCliente, false);*/
 
-var oBtnEnviarVenta = document.getElementById("btnEnviarVenta");
-oBtnEnviarVenta.addEventListener("click", enviarVenta, false);
+/*var oBtnEnviarVenta = document.getElementById("btnEnviarVenta");
+oBtnEnviarVenta.addEventListener("click", enviarVenta, false);*/
 
-var oBtnEnviarCompra = document.getElementById("btnEnviarCompra");
-oBtnEnviarCompra.addEventListener("click", enviarCompra, false);
+/*var oBtnEnviarCompra = document.getElementById("btnEnviarCompra");
+oBtnEnviarCompra.addEventListener("click", enviarCompra, false);*/
 
-var oBtnEnviarReparacion = document.getElementById("btnEnviarReparacion");
-oBtnEnviarReparacion.addEventListener("click", enviarReparacion, false);
+/*var oBtnEnviarReparacion = document.getElementById("btnEnviarReparacion");
+oBtnEnviarReparacion.addEventListener("click", enviarReparacion, false);*/
 
 
 
@@ -75,9 +423,9 @@ oBtnListarVehiculos.addEventListener("click", mostrarListarVehiculos, false);
 var oBtnListarEmple = document.getElementById("btnListarEmpleados");
 oBtnListarEmple.addEventListener("click", mostrarListaEmple, false);
 
-function altaProveedor(){
+/*function altaProveedor(){
 	
-	ocultarFormularios();
+	inicio();
 	var formAltaProv = document.getElementById("formAltaProv");
 	formAltaProv.reset();
 	formAltaProv.style.display = "block";
@@ -96,7 +444,7 @@ function enviarAltaProveedor(){
 		formAltaProv.telProv.value=="" || formAltaProv.tipoProv.value==""){
 		sMensaje= "Debe Rellenar Todos los Campos.";				
 	} else{*/
-		var cifProv= formAltaProv.cifProv.value.trim();
+		/*var cifProv= formAltaProv.cifProv.value.trim();
 		var nomProv= formAltaProv.nomProv.value.trim();
 		var dirProv= formAltaProv.dirProv.value.trim();
 		var telProv= formAltaProv.telProv.value.trim();
@@ -107,7 +455,7 @@ function enviarAltaProveedor(){
 		});*/
 
 		//var oProveedor= new Proveedor(cifProv,nomProv,dirProv,telProv);
-		$.post("php/alta.php", {m: "proveedor", c: cifProv, n: nomProv, d: dirProv, t: telProv },
+		/*$.post("php/alta.php", {m: "proveedor", c: cifProv, n: nomProv, d: dirProv, t: telProv },
 			function (data,status){
 				if(status=="success"){
 					
@@ -126,14 +474,14 @@ function enviarAltaProveedor(){
 	//}
 
 	//alert(sMensaje);
-	ocultarFormularios();
+	inicio();
 	}
 
-}
+}*/
 
-function altaEmpleado(){
+/*function altaEmpleado(){
 	
-	ocultarFormularios();
+	inicio();
 	var formAltaEmp = document.getElementById("formAltaEmpleado");
 	formAltaEmp.reset();
 	formAltaEmp.style.display = "block";
@@ -153,7 +501,7 @@ function enviarAltaEmpleado(){
 			formAltaEmpleado.ventasEmp.value=="" || formAltaEmpleado.salEmp.value==""){
 			sMensaje= "Debe Rellenar Todos los Campos.";				
 		} else{*/
-			var dniEmp= formAltaEmpleado.dniEmp.value.trim();
+			/*var dniEmp= formAltaEmpleado.dniEmp.value.trim();
 			var nomEmp= formAltaEmpleado.nomEmp.value.trim();
 			var apeEmp= formAltaEmpleado.apeEmp.value.trim();
 			var salEmp= formAltaEmpleado.salEmp.value.trim();
@@ -181,14 +529,14 @@ function enviarAltaEmpleado(){
 		//}
 
 		//alert(sMensaje);
-		ocultarFormularios();
+		inicio();
 	}
 
-}
+}*/
 
-function altaVehiculo(){
+/*function altaVehiculo(){
 	
-	ocultarFormularios();
+	inicio();
 	var formAltaVeh = document.getElementById("formAltaVeh");
 	formAltaVeh.reset();
 	formAltaVeh.style.display = "block";
@@ -211,7 +559,7 @@ function enviarAltaVehiculo()
 			formAltaEmpleado.ventasEmp.value=="" || formAltaEmpleado.salEmp.value==""){
 			sMensaje= "Debe Rellenar Todos los Campos.";				
 		} else{*/
-			var matVehiculo = formAltaVeh.matVehiculo.value.trim();
+			/*var matVehiculo = formAltaVeh.matVehiculo.value.trim();
 			var marcaVehiculo = formAltaVeh.marcaVehiculo.value.trim();
 			var modVehiculo = formAltaVeh.modVehiculo.value.trim();
 			var tasVehiculo = formAltaVeh.tasVehiculo.value.trim();
@@ -272,15 +620,15 @@ function enviarAltaVehiculo()
 		//}
 
 		//alert(sMensaje);
-		ocultarFormularios();
+		inicio();
 	}
 
 
-}
+}*/
 
-function altaCliente(){
+/*function altaCliente(){
 	
-	ocultarFormularios();
+	inicio();
 	var formAltaCli = document.getElementById("formAltaCli");
 	formAltaCli.reset();
 	formAltaCli.style.display = "block";
@@ -298,10 +646,10 @@ if (validarAltaCli())
 	var formAltaCli= document.getElementById("formAltaCli");
 	var sMensaje = "";
 		
-	/*if(formAltaCli.dniCliente.value=="" || formAltaCli.nomCliente.value=="" || formAltaCli.apCliente.value=="" || 
+	if(formAltaCli.dniCliente.value=="" || formAltaCli.nomCliente.value=="" || formAltaCli.apCliente.value=="" || 
 		formAltaCli.telCliente.value==""){
 		sMensaje= "Debe Rellenar Todos los Campos.";				
-	} else{*/
+	} else{
 		var dniCliente= formAltaCli.dniCliente.value.trim();
 		var nomCliente= formAltaCli.nomCliente.value.trim();
 		var apCliente= formAltaCli.apCliente.value.trim();
@@ -316,12 +664,12 @@ if (validarAltaCli())
 	//}
 
 	alert(sMensaje);
-	ocultarFormularios();
+	inicio();
 	}
 }
-
-function mostrarRegistrarCompra(){
-	ocultarFormularios();
+*/
+/*function mostrarRegistrarCompra(){
+	inicio();
 	var formRegCompra = document.getElementById("formRegCompra");
 
 	formRegCompra.reset();
@@ -355,16 +703,16 @@ function enviarCompra()
         
 
 	alert(sMensaje);
-	ocultarFormularios();
+	inicio();
 	}
 		
 	
-}
+}*/
 
 
 
-function mostrarRegistrarVenta(){
-	ocultarFormularios();
+/*function mostrarRegistrarVenta(){
+	inicio();
 	var formRegVenta = document.getElementById("formRegVenta");
 
 	formRegVenta.reset();
@@ -410,14 +758,14 @@ function enviarVenta()
 			
 
 		alert(sMensaje);
-		ocultarFormularios();
+		inicio();
 	}
-}
+}*/
 
-//-------FUNCION REGISTRAR REPARACION-------
+/*//-------FUNCION REGISTRAR REPARACION-------
 function mostrarRegistrarRep()
 {
-	ocultarFormularios();
+	inicio();
 	rellenarCombosReparacion();
 	var formRegRep = document.getElementById("formRegReparacion");
 	formRegReparacion.costeRepVehiculo.classList.remove('error');
@@ -448,12 +796,12 @@ function enviarReparacion()
 		var sMensaje = cvCoches.altaReparacion(oReparacion);
 	}
 	alert(sMensaje);
-	ocultarFormularios();
-}
+	inicio();
+}*/
 
 //MOSTRAR LISTADOS
 function mostrarListaProv(){
-	ocultarFormularios();
+	inicio();
 	var oDivListados = document.getElementById("listas");
 	
 	if (cvCoches._proveedores.length!==0){
@@ -548,7 +896,7 @@ function mostrarListaProv(){
 }
 
 function mostrarListaCli(){
-	ocultarFormularios();
+	inicio();
 	var oDivListados = document.getElementById("listas");
 	
 	if (cvCoches._clientes.length!==0){
@@ -637,7 +985,7 @@ function mostrarListaCli(){
 }
 
 function mostrarListaVentas(){
-	ocultarFormularios();
+	inicio();
 	var oDivListados = document.getElementById("listas");
 	
 	if (cvCoches._ventas.length!==0){
@@ -748,7 +1096,7 @@ function mostrarListaVentas(){
 
 function mostrarListaCompras()
 {
-	ocultarFormularios();
+	inicio();
 	var oDivListados = document.getElementById("listas");
 	
 	if (cvCoches._compras.length!==0){
@@ -878,7 +1226,7 @@ function mostrarListaCompras()
 
 function mostrarListaReparaciones()
 {
-	ocultarFormularios();
+	inicio();
 	var oDivListados = document.getElementById("listas");
 	
 	if (cvCoches._reparaciones.length!==0){
@@ -974,7 +1322,7 @@ function mostrarListaReparaciones()
 
 function mostrarListarVehiculos()
 {
-	ocultarFormularios();
+	inicio();
 	var oDivListados = document.getElementById("listas");
 	
 	if (cvCoches._vehiculos.length!==0){
@@ -1110,7 +1458,7 @@ function mostrarListarVehiculos()
 
 
 function mostrarListaEmple(){
-	ocultarFormularios();
+	inicio();
 	var oDivListados = document.getElementById("listas");
 	
 	if (cvCoches._empleados.length!==0){
@@ -1204,7 +1552,7 @@ function mostrarListaEmple(){
 
 //OCULTAR FORMULARIOS
 
-function ocultarFormularios(){
+/*function inicio(){
 	$("#mensaje").empty(); 
 	document.getElementById("formAltaProv").style.display = "none";
 	document.getElementById("formAltaEmpleado").style.display = "none";
@@ -1216,13 +1564,13 @@ function ocultarFormularios(){
 	//Ocultar listas
 	document.getElementById("listas").style.display = "none";
 	
-}
+}*/
 
-var oBtnTipoCoche= document.getElementById("radioCoche");
+/*var oBtnTipoCoche= document.getElementById("radioCoche");
 oBtnTipoCoche.addEventListener("click",mostrarTipoCoche,false);
 
 var oBtnTipoCamion= document.getElementById("radioCamion");
-oBtnTipoCamion.addEventListener("click",mostrarTipoCamion,false);
+oBtnTipoCamion.addEventListener("click",mostrarTipoCamion,false);*/
 
 function mostrarTipoCoche(){
 	document.getElementById("tipoCamion").style.display = "none";
@@ -1491,7 +1839,7 @@ function rellenarCombosReparacion(){
 //--------------VALIDACION----------------------
 
 //validacion formulario alta proveedor
-function validarAltaProv()
+/*function validarAltaProv()
 {
 
 	var bValido = true;
@@ -1567,10 +1915,10 @@ function validarAltaProv()
 	} else {
 		return true;
 	}
-}
+}*/
 
 //validacion formulario alta empleado
-function validarAltaEmpleado(oEvento)
+/*function validarAltaEmpleado(oEvento)
 {
 	var oE = oEvento || window.event;
 	var bValido = true;
@@ -1647,10 +1995,10 @@ function validarAltaEmpleado(oEvento)
 	} else {
 		return true;
 	}
-}
+}*/
 
 //validacion formulario alta coche
-function validarAltaVeh(oEvento)
+/*function validarAltaVeh(oEvento)
 {
 	var oE = oEvento || window.event;
 	var bValido = true;
@@ -1881,9 +2229,9 @@ function validarAltaVeh(oEvento)
 	}
 	else
 		return true;		
-}
+}*/
 
- function validarAltaCli(oEvento)
+ /*function validarAltaCli(oEvento)
  {
  	var oE = oEvento || window.event;
 	var bValido = true;
@@ -1958,9 +2306,9 @@ function validarAltaVeh(oEvento)
 	}
 	else
 		return true;	
- }
+ }*/
 
-function validarCompra(oEvento)
+/*function validarCompra(oEvento)
 {
 	var oE = oEvento || window.event;
 	var bValido = true;
@@ -2003,9 +2351,9 @@ function validarCompra(oEvento)
 	}
 	else
 		return true;
-}
+}*/
 
-function validarVenta()
+/*function validarVenta()
 {
 	var selectVentas = formRegVenta.querySelectorAll('select');
 	bValido = true;
@@ -2080,7 +2428,7 @@ function validarVenta()
 	}
 	else
 		return true;
-}
+}*/
 
 /*plantilla validaciones
 function validarAltaVeh(oEvento)
