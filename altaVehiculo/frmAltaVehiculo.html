@@ -1,0 +1,62 @@
+<form id="formAltaVeh" class="formulario">
+	<h3>Alta Vehículo</h3>
+		<div class="form-group">
+	   		<label>Matrícula</label>
+	   		<input type="text" class="form-control" id="matVehiculo">
+	    </div>
+	  	<div class="form-group">
+	   		<label>Marca</label>
+	   		<input type="text" class="form-control" id="marcaVehiculo">
+	    </div>
+	    <div class="form-group">
+	   		<label>Modelo</label>
+	   		<input type="text" class="form-control" id="modVehiculo">
+	    </div>
+	    <div class="form-group">
+	   		<label>Tasación</label>
+	   		<input type="text" class="form-control" id="tasVehiculo">
+	    </div>
+	    <div class="form-group">
+	   		<label>Combustible</label>
+	   		<input type="text" class="form-control" id="combVehiculo">
+	    </div>
+	    <div class="form-group">
+	   		<label>Plazas</label>
+	   		<input type="text" class="form-control" id="plazasVehiculo">
+	    </div>
+	    <div class="radio">
+			<label><input type="radio" id="radioCoche" name="tipoVehiculo" value="coche">Coche</label>
+			<label><input type="radio" id="radioCamion" name="tipoVehiculo" value="camion">Camión</label>
+		</div>
+		<div id="tipoCoche">
+			<div class="form-group">
+		   		<label>Número de puertas</label>
+		   		<input type="text" class="form-control" id="nPuertasCoche">
+			</div>
+			<div class="form-group">
+				<label>Tapicería</label>
+				<input type="text" class="form-control" id="tapiceriaCoche">
+			</div>
+			<div class="form-group">
+				<label>Tipo de Coche</label>
+				<input type="text" class="form-control" id="tpCoche">
+			</div>
+		</div>
+		<div id="tipoCamion">
+			<div class="form-group">
+	   			<label>Carga Máxima</label>
+	   			<input type="text" class="form-control" id="cargaCamion">
+			</div>
+			<div class="form-group">
+			   	<label>Tipo de carga</label>
+			   	<input type="text" class="form-control" id="tipoCargaCamion">
+			</div>
+			<div class="form-group">
+			   	<label>Capacidad de Combustible</label>
+			   	<input type="text" class="form-control" id="capCombCamion">
+			</div>
+		</div>
+  
+  	<input type="button" class="btn btn-default" id="btnEnviarAltaVehiculo" value="Enviar">
+  	<button type="reset" class="btn btn-danger">Limpiar</button>
+</form> 
