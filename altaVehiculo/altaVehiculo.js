@@ -29,7 +29,7 @@ function enviarAltaVehiculo()
 				//var oCoche = new Coche(matVehiculo,marcaVehiculo,modVehiculo,tasVehiculo,combVehiculo,plazasVehiculo,nPuertasCoche,tapiceriaCoche,tpCoche,tipoVehiculo);
 				//sMensaje = cvCoches.altaVehiculo(oCoche);
 
-				$.post("../../php/alta.php", {m: "coche", matricula: matVehiculo, marca: marcaVehiculo, modelo: modVehiculo, tasacion: tasVehiculo, combustible: combVehiculo, plazas: plazasVehiculo, puertas: nPuertasCoche, tapiceria: tapiceriaCoche, tipo: tpCoche,  tipoveh: tipoVehiculo},
+				$.post("./php/alta.php", {m: "coche", matricula: matVehiculo, marca: marcaVehiculo, modelo: modVehiculo, tasacion: tasVehiculo, combustible: combVehiculo, plazas: plazasVehiculo, puertas: nPuertasCoche, tapiceria: tapiceriaCoche, tipo: tpCoche,  tipoveh: tipoVehiculo},
 			function (data,status){
 
 				if(status=="success"){
@@ -51,7 +51,7 @@ function enviarAltaVehiculo()
 
 				//var oCamion = new Camion(matVehiculo,marcaVehiculo,modVehiculo,tasVehiculo,combVehiculo,plazasVehiculo,cargaCamion,tipoCargaCamion,capCombCamion,tipoVehiculo);
 				//sMensaje = cvCoches.altaVehiculo(oCamion);
-				$.post("../php/alta.php", {m: "camion", matricula: matVehiculo, marca: marcaVehiculo, modelo: modVehiculo, tasacion: tasVehiculo, combustible: combVehiculo, plazas: plazasVehiculo, carga: cargaCamion, tipo: tipoCargaCamion,  capacidad: capCombCamion, tipoveh: tipoVehiculo},
+				$.post("./php/alta.php", {m: "camion", matricula: matVehiculo, marca: marcaVehiculo, modelo: modVehiculo, tasacion: tasVehiculo, combustible: combVehiculo, plazas: plazasVehiculo, carga: cargaCamion, tipo: tipoCargaCamion,  capacidad: capCombCamion, tipoveh: tipoVehiculo},
 			function (data,status){
 
 				if(status=="success"){

@@ -274,7 +274,9 @@ function cargaRegistrarCompra()
     } else {
         // Lo muestro si está oculto
        $('#formRegCompra').show("normal");
-    }
+	}
+	
+	rellenarCombosCompra();
 
 }
 
@@ -1585,109 +1587,127 @@ function mostrarTipoCamion(){
 }
 
 //FUNCIONES PARA RELLENAR COMBOS
+var aProveedores;
+var aEmpleados;
+var aVehiculos;
+
+var existeProv;
+var existeEmp;
+var existeVeh;
+
 function rellenarCombosCompra(){
-	var formRegCompra = document.getElementById("formRegCompra");
-	var selectCompraProv = document.getElementById("selectCompraProv");
 	
 
 	//Combo proveedores
-	if (cvCoches._proveedores.length==0){
-		for (var k=0;k<selectCompraProv.length;k++){
-			selectCompraProv.remove(k);
-		}
-		var optionProv = document.createElement("option");
-		var textnode = document.createTextNode("No hay proveedores dados de alta");
-		optionProv.appendChild(textnode);
-		optionProv = selectCompraProv.appendChild(optionProv);
-	} else {
-		for (var k=0;k<selectCompraProv.length;k++){
-			selectCompraProv.remove(k);
-		}
-		for (var i=0;i<cvCoches._proveedores.length;i++){
-			var optionProv = document.createElement("option");
-			optionProv.setAttribute("value",cvCoches._proveedores[i].cif)
-			optionProv.setAttribute("id","comboProv")
-			var textnode = document.createTextNode( cvCoches._proveedores[i].cif+' - '+cvCoches._proveedores[i].nombre);
-			optionProv.appendChild(textnode);
-			optionProv = selectCompraProv.appendChild(optionProv);
+
+	$.ajax({
+		url: './registrarCompra/rellenaCombos.php?c=prov',
+		type: 'POST', 
+		dataType: 'json',
+	})
+	.done(function(data) {
 		
-		}
-	}
-
-	//Combo empleados
-	var selectCompraEmp = document.getElementById("selectCompraEmp");
-	if (cvCoches._empleados.length==0){
-		for (var k=0;k<selectCompraEmp.length;k++){
-			selectCompraEmp.remove(k);
-		}
-		var optionEmp = document.createElement("option");
-		var textnode = document.createTextNode("No hay empleados dados de alta");
-		optionEmp.appendChild(textnode);
-		optionEmp = selectCompraEmp.appendChild(optionEmp);
-
-	} else {
-
-		for (var k=0;k<selectCompraEmp.length;k++){
-			selectCompraEmp.remove(k);
-		}
-
+		//console.log(data);
+		aProveedores=data;
+		existeProv=true;
 		
-		for (var i=0;i<cvCoches._empleados.length;i++){
+		
+	})
+	.fail(function() {
+		
+		existeProv=false;
+	});
+	
+	
+	
+	if (!existeProv){
+		$("#selectCompraProv").empty();
+		$("#selectCompraProv").append("<option>No hay proveedores dados de alta</option>");
+		
+	} else {
+		$("#selectCompraProv").empty();
+		for (var i=0;i<aProveedores.length;i++){
+			var datoProv = aProveedores[i].toString().split(",");
 			
-
-			var optionEmp = document.createElement("option");
-			optionEmp.setAttribute("value",cvCoches._empleados[i].dni)
-			optionEmp.setAttribute("id","comboEmp")
-			var textnode = document.createTextNode(cvCoches._empleados[i].dni+' - '+cvCoches._empleados[i].nombre+' '+cvCoches._empleados[i].apellidos);
-			optionEmp.appendChild(textnode);
-			optionEmp = selectCompraEmp.appendChild(optionEmp);
-
-
-
+			$("#selectCompraProv").append('<option value="'+datoProv[0]+'">'+datoProv[0]+' - '+datoProv[1]+'</option>');
 		
 		}
 	}
+	
+	//Combo empleados
 
-	//Combo Vehiculo
-
-
-	if (cvCoches._vehiculos.length==0){
-
-		for (var k=0;k<formRegCompra.selectCompraVehiculo.length;k++){
-			formRegCompra.selectCompraVehiculo.remove(k);
-		}
-		var optionVeh = document.createElement("option");
-		var textnode = document.createTextNode("No hay vehiculos dados de alta");
-		optionVeh.appendChild(textnode);
-		optionVeh = formRegCompra.selectCompraVehiculo.appendChild(optionVeh);
-
-
+	$.ajax({
+		url: './registrarCompra/rellenaCombos.php?c=emp',
+		type: 'POST', 
+		dataType: 'json',
+	})
+	.done(function(data) {
 		
+	//	console.log(data);
+		aEmpleados=data;
+		existeEmp=true;
+		
+		
+	})
+	.fail(function() {
+		
+	existeEmp=false;
+	});
+
+
+;
+	if (!existeEmp){
+		$("#selectCompraEmp").empty();
+		$("#selectCompraEmp").append("<option>No hay proveedores dados de alta</option>");
+
 	} else {
-		/*for (var k=0;k<selectCompraVehiculo.length;k++){
-			selectCompraVehiculo.remove(k);
-		}*/
 
-		if ( formRegCompra.selectCompraVehiculo.hasChildNodes() )
-		{
-			while ( formRegCompra.selectCompraVehiculo.childNodes.length >= 1 ){
-					formRegCompra.selectCompraVehiculo.removeChild( formRegCompra.selectCompraVehiculo.firstChild );
-				}
-		}
-
-		
-		for (var i=0;i<cvCoches._vehiculos.length;i++){
-
-			var optionVeh = document.createElement("option");
-			optionVeh.setAttribute("value",cvCoches._vehiculos[i].matricula)
-			optionVeh.setAttribute("id","comboVeh")
-			var textnode = document.createTextNode(cvCoches._vehiculos[i].matricula+' - '+cvCoches._vehiculos[i].marca+' '+cvCoches._vehiculos[i].modelo);
-			optionVeh.appendChild(textnode);
-			optionVeh = formRegCompra.selectCompraVehiculo.appendChild(optionVeh);
-
+		$("#selectCompraEmp").empty();
+		for (var i=0;i<aEmpleados.length;i++){
+			var datoProv = aEmpleados[i].toString().split(",");
+			
+			$("#selectCompraEmp").append('<option value="'+datoProv[0]+'">'+datoProv[0]+' - '+datoProv[1]+' '+datoProv[2]+'</option>');
 		
 		}
-	}	
+	}
+	
+	//Combo Vehiculo
+	
+	$.ajax({
+		url: './registrarCompra/rellenaCombos.php?c=veh',
+		type: 'POST', 
+		dataType: 'json',
+	})
+	.done(function(data) {
+		
+	//	console.log(data);
+		aVehiculos=data;
+	
+		existeVeh=true;
+		
+		
+	})
+	.fail(function() {
+	
+		existeVeh=false;
+	});
+
+
+
+	if (!existeVeh){
+		$("#selectCompraVehiculo").empty();
+		$("#selectCompraVehiculo").append("<option>No hay vehiculos dados de alta</option>");
+
+	} else {
+
+		$("#selectCompraVehiculo").empty();
+		for (var i=0;i<aVehiculos.length;i++){
+			var datoProv = aVehiculos[i].toString().split(",");
+			
+			$("#selectCompraVehiculo").append('<option value="'+datoProv[0]+'">'+datoProv[0]+' - '+datoProv[1]+'</option>');
+		
+		}
+	}
 }
 
 function rellenarCombosVenta(){

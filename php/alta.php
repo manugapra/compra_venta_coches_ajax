@@ -84,7 +84,7 @@ if(isset($_POST["m"])){
         
 
         $resultado2=insert("INSERT INTO camion (cargamax, tipocarga, cap_comb, id) VALUES ($carga, '$tipo', $capacidad, ".$consultaId.")");
-        echo "INSERT INTO camion (cargamax, tipocarga, cap_comb, id) VALUES ($carga, '$tipo', $capacidad, ".$consultaId.")";
+       
 
 
 
@@ -101,6 +101,25 @@ if(isset($_POST["m"])){
         }
       
     }
+
+
+    //ALTA CLIENTE
+    if($m=="cliente"){
+        $resultado=insert("INSERT INTO clientes (dni, nombre, apellidos, telefono) VALUES ('$d','$n','$a',$t)");
+        if($resultado==""){
+            echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Cliente dado de alta correctamente</div>';
+        } else if ($resultado!=""){
+            
+            $errores = explode (" ", $resultado);
+            if ($errores[0]=="Duplicate"){
+                echo '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Ya existe un cliente dado de alta con ese DNI</div>';
+            } else {
+                echo '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Ha ocurrido un error.</div>';
+            }
+        }
+      
+    }
+
 }
 
 

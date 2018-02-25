@@ -1,11 +1,11 @@
-$('#btnEnviarAltaCliente').click(enviarAltaVehiculo);
+$('#btnEnviarAltaCliente').click(enviarAltaCliente);
 
 function enviarAltaCliente(){
 if (validarAltaCli()) 
 {
 
 	var formAltaCli= document.getElementById("formAltaCli");
-	var sMensaje = "";
+	//var sMensaje = "";
 		
 	/*if(formAltaCli.dniCliente.value=="" || formAltaCli.nomCliente.value=="" || formAltaCli.apCliente.value=="" || 
 		formAltaCli.telCliente.value==""){
@@ -18,13 +18,29 @@ if (validarAltaCli())
 
 		//console.log(dniCliente+' '+nomCliente+' '+apCliente+' '+telCliente);
 		
-		var oCliente = new Cliente(dniCliente,nomCliente,apCliente,telCliente);
-		
-		sMensaje = cvCoches.altaCliente(oCliente);
+		//var oCliente = new Cliente(dniCliente,nomCliente,apCliente,telCliente);
+
+		$.post("./php/alta.php", {m: "cliente", d: dniCliente, n: nomCliente, a: apCliente, t: telCliente },
+		function (data,status){
+
+			if(status=="success"){
+				
+				$("#mensaje").append(data);
+				formAltaCli.reset();
+			} else {
+				$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Ha ocurrido un error de conexión</strong></div>')
+
+
+			}
+			
+		});
+
+
+		//sMensaje = cvCoches.altaCliente(oCliente);
         //altaCliente();
 	//}
 	
-	alert(sMensaje);
+	//alert(sMensaje);
 	inicio();
 	}
 }
@@ -45,7 +61,7 @@ function validarAltaCli(oEvento)
 		formAltaCli.dniCliente.classList.add('error');
 		formAltaCli.dniCliente.focus();
 		bValido = false;
-		sError = 'El DNI tiene que tener 8 cifras y una letra \n';
+		sError = 'El DNI tiene que tener 8 cifras y una letra. <br>';
 	}
 	else
 		formAltaCli.dniCliente.classList.remove('error');
@@ -60,7 +76,7 @@ function validarAltaCli(oEvento)
 		formAltaCli.nomCliente.classList.add('error');
 		formAltaCli.nomCliente.focus();
 		bValido = false;
-		sError += 'Escriba un nombre \n';
+		sError += 'Escriba un nombre. <br>';
 	}
 	else
 		formAltaCli.nomCliente.classList.remove('error');
@@ -75,7 +91,7 @@ function validarAltaCli(oEvento)
 		formAltaCli.apCliente.classList.add('error');
 		formAltaCli.apCliente.focus();
 		bValido = false;
-		sError += 'Escriba los apellidos \n';
+		sError += 'Escriba los apellidos <br>';
 	}
 	else
 		formAltaCli.apCliente.classList.remove('error');
@@ -90,7 +106,7 @@ function validarAltaCli(oEvento)
 		formAltaCli.telCliente.classList.add('error');
 		formAltaCli.telCliente.focus();
 		bValido = false;
-		sError += 'El telefono tiene que tener 9 digitos y debe empezar por 6 o 7 \n';
+		sError += 'El telefono tiene que tener 9 digitos y debe empezar por 6 o 7. <br>';
 	}
 	else
 		formAltaCli.telCliente.classList.remove('error');
@@ -98,8 +114,8 @@ function validarAltaCli(oEvento)
 
 	if (bValido == false) 
 	{
-		alert(sError);
-		//oE.preventDefault();
+		$("#mensaje").empty();
+		$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+sError+'</div>');
 		return false;
 	}
 	else

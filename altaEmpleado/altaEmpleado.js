@@ -18,12 +18,13 @@ function enviarAltaEmpleado(){
 			
 			//sMensaje = cvCoches.altaEmpleado(oEmpleado);
 
-			$.post("../php/alta.php", {m: "empleado", d: dniEmp, n: nomEmp, a: apeEmp, s: salEmp },
+			$.post("./php/alta.php", {m: "empleado", d: dniEmp, n: nomEmp, a: apeEmp, s: salEmp },
 			function (data,status){
 
 				if(status=="success"){
 					
 					$("#mensaje").append(data);
+					formAltaProv.reset();
 				} else {
 					$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Ha ocurrido un error de conexión</strong></div>')
 
