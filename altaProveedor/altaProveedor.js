@@ -1,6 +1,8 @@
 $('#btnEnviarAltaProveedor').click(enviarAltaProveedor);
 
-
+$.get('./php/getProveedores.php',null,tratarGetProveedores,'json');
+$.get('./php/getEmpleados.php',null,tratarGetEmpleados,'json');
+$.get('./php/getVehiculos.php',null,tratarGetVehiculos,'json');
 
 function enviarAltaProveedor(){
 	if (validarAltaProv()){

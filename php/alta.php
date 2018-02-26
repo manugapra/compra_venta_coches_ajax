@@ -120,6 +120,23 @@ if(isset($_POST["m"])){
       
     }
 
+     //REGISTRAR COMPRA
+     if($m=="compra"){
+        $resultado=insert("INSERT INTO compra (vehiculo, importe, fecha, proveedor, empleado, comentarios) VALUES ('$v',$i,'$f','$p','$e','$o')");
+        if($resultado==""){
+            echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Compra registrada correctamente</div>';
+        } else if ($resultado!=""){
+            
+            $errores = explode (" ", $resultado);
+            if ($errores[0]=="Duplicate"){
+                echo '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>El vehiculo seleccionado ya ha sido vendido</div>';
+            } else {
+                echo '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Ha ocurrido un error.</div>';
+            }
+        }
+      
+    }
+
 }
 
 

@@ -1,9 +1,14 @@
 $('#btnEnviarCompra').click(enviarCompra);
-$.get('./php/getProveedores.php',null,tratarGetProveedores,'json');
-$.get('./php/getEmpleados.php',null,tratarGetEmpleados,'json');
-$.get('./php/getVehiculos.php',null,tratarGetVehiculos,'json');
+
+	$.get('./php/getProveedores.php',null,tratarGetProveedores,'json');
+	$.get('./php/getEmpleados.php',null,tratarGetEmpleados,'json');
+	$.get('./php/getVehiculos.php',null,tratarGetVehiculos,'json');
+	
+
+
 function enviarCompra()
 {
+
 	if (validarCompra()) 
 	{
 		var formRegCompra= document.getElementById("formRegCompra");
@@ -19,10 +24,27 @@ function enviarCompra()
 		//var oCompra = new Compra(selectCompraVehiculo,importeCompraVehiculo,fechaCompraVehiculo,selectCompraProv,selectCompraEmp,observCompraVehiculo);
 		
 		//sMensaje = cvCoches.altaCompra(oCompra);
+		if(observCompraVehiculo==""){
+			observCompraVehiculo=" ";
+		}
+		$.post("./php/alta.php", {m: "compra", v: selectCompraVehiculo, i: importeCompraVehiculo, f: fechaCompraVehiculo, p: selectCompraProv, e: selectCompraEmp, o: observCompraVehiculo },
+			function (data,status){
+				if(status=="success"){
+					
+					$("#mensaje").append(data);
+					
+					formRegCompra.reset();
+					inicio();
+				} else {
+					$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Ha ocurrido un error de conexión</strong></div>')
+
+
+				}
+			});
         
 
 	//alert(sMensaje);
-	inicio();
+	
 	}
 		
 	
@@ -44,29 +66,57 @@ function validarCompra(oEvento)
 		formRegCompra.importeCompraVehiculo.classList.add('error');
 		formRegCompra.importeCompraVehiculo.focus();
 		bValido=false;
-		sError = 'Debe introducir un importe.\n';
+		sError = 'Debe introducir un importe.<br>';
 	}
 	else
 		formRegCompra.importeCompraVehiculo.classList.remove('error');
 
 	//campo fecha
-	var dFecha = formRegCompra.fechaCompraVehiculo.value.trim();
-	formRegCompra.fechaCompraVehiculo.value= formRegCompra.fechaCompraVehiculo.value.trim();
-	var oExpReg = /^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$/i;
-
-	if (oExpReg.test(dFecha)==false) 
+	
+	
+	if ($("#fechaCompraVehiculo").val()=="") 
 	{
 		formRegCompra.fechaCompraVehiculo.classList.add('error');
 		formRegCompra.fechaCompraVehiculo.focus();
 		bValido=false;
-		sError += 'Debe introducir una fecha. Por ejemplo: 01/01/2018.\n';
+		sError += 'Debe introducir una fecha.<br>';
 	}
-	else
-		formRegCompra.fechaCompraVehiculo.classList.remove('error');
+	else{
 
+		formRegCompra.fechaCompraVehiculo.classList.remove('error');
+	}
+	if($("#selectCompraVehiculo").val()==0){
+		$("#selectCompraVehiculo").addClass('error','error');
+		$("#selectCompraVehiculo").focus();
+		bValido=false;
+		sError+= 'Debe seleccionar algún vehiculo.<br>'
+	} else {
+		$("#selectCompraVehiculo").removeClass('error');
+	}
+	if($("#selectCompraProv").val()==0){
+		$("#selectCompraProv").addClass('error');
+		$("#selectCompraProv").focus();
+		bValido=false;
+		sError+= 'Debe seleccionar algún Proveedor.<br>'
+	} else {
+		$("#selectCompraProv").removeClass('error');
+	}
+	
+	if($("#selectCompraEmp").val()==0){
+		$("#selectCompraEmp").addClass('error');
+		$("#selectCompraEmp").focus();
+		bValido=false;
+		sError+= 'Debe seleccionar algún empleado.<br>'
+	} else {
+		$("#selectCompraEmp").removeClass('error');
+	}
+
+	
 	if (bValido == false) 
 	{
-		alert(sError);
+		$("#mensaje").empty();
+		$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+sError+'</div>');
+		
 		return false;
 	}
 	else
@@ -75,9 +125,9 @@ function validarCompra(oEvento)
 function tratarGetProveedores(oArrayProv, sStatus, oXHR)
 {
 	$('#selectCompraProv').empty();
-
+	$("#selectCompraProv").append('<option value="0" >Seleccione un proveedor...</option>');
 	jQuery.each(oArrayProv, function(i, elemento) {
-        //$('<option value="' + elemento.cif + '" >' + elemento.Nombre + '</option>').appendTo("#selectProveedor");
+       
         $("#selectCompraProv").append('<option value="' + elemento.cif + '" >' + elemento.nombre + '</option>');
     });
 }
@@ -85,19 +135,21 @@ function tratarGetProveedores(oArrayProv, sStatus, oXHR)
 function tratarGetEmpleados(oArrayProv, sStatus, oXHR)
 {
 	$('#selectCompraEmp').empty();
-
+	$("#selectCompraEmp").append('<option value="0" >Seleccione un empleado...</option>');
 	jQuery.each(oArrayProv, function(i, elemento) {
-        //$('<option value="' + elemento.cif + '" >' + elemento.Nombre + '</option>').appendTo("#selectProveedor");
+        
         $("#selectCompraEmp").append('<option value="' + elemento.dni + '" >' + elemento.nombre + ' '+elemento.apellidos+'</option>');
     });
 }
 
 function tratarGetVehiculos(oArrayProv, sStatus, oXHR)
 {
+		
 	$('#selectCompraVehiculo').empty();
-
+	$("#selectCompraVehiculo").append('<option value="0" >Seleccione un vehiculo...</option>');
 	jQuery.each(oArrayProv, function(i, elemento) {
-        //$('<option value="' + elemento.cif + '" >' + elemento.Nombre + '</option>').appendTo("#selectProveedor");
+		
+       
         $("#selectCompraVehiculo").append('<option value="' + elemento.matricula + '" >' + elemento.marca + ' '+elemento.modelo+'</option>');
     });
 }
