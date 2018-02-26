@@ -5,7 +5,7 @@ $.get('php/getProveedores.php',null,tratarGetProveedores,'json');
 function enviarEditarProveedor()
 {
 	var proveedor = $('#selectProveedor').val();
-	$.get('php/getDatosProveedores.php',{cif: proveedor},tratarGetDatos,'json');
+	$.get('php/getDatos.php',{d: 'proveedor', proveedor: proveedor},tratarGetDatos,'json');
 	$('#formEditarProv2').show('blind');
 }
 
