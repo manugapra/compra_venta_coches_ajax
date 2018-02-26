@@ -24,10 +24,6 @@ function cargaAltaProveedor()
 	  });
   
   $("#mensaje").empty();
-	
-
-
-
 }
 
 $('#btnEditarProveedor').click(cargaEditarProveedor);
