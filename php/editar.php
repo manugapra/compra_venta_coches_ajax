@@ -29,6 +29,15 @@ if(isset($_POST["m"])){
 		
 	}
 
+	//venta
+	else if ($m=='venta')
+	{
+		$cadena = "UPDATE `venta` SET `importe`=".$importe.",`comentarios`='".$comentario."' WHERE `vehiculo`='".$vehiculo."'";
+		$consulta = update($cadena);
+		echo true;
+		
+	}
+
 }
 
 function update($cadena)
