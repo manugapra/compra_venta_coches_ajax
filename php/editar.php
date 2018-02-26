@@ -20,6 +20,15 @@ if(isset($_POST["m"])){
 		$consulta = update($cadena);
 	}
 
+	//vehiculo
+	else if ($m=='vehiculo')
+	{
+		$cadena = "UPDATE `vehiculos` SET `matricula`='".$matricula."',`tasacion`=".$tasacion." WHERE `matricula`='".$matricula."'";
+		$consulta = update($cadena);
+		echo true;
+		
+	}
+
 }
 
 function update($cadena)
