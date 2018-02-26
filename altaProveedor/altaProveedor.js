@@ -112,7 +112,7 @@ function validarAltaProv()
 		formAltaProv.telProv.classList.add("error");
 		formAltaProv.telProv.focus();
 		bValido = false;
-		sError += "El telefono tiene que empezar por 6 o 7 y tiene que tener 9 cifras. <br>"; 
+		sError += "El telefono tiene que empezar por 6 o 7 y tiene que tener 9 cifras."; 
 	} else {
 		formAltaProv.telProv.classList.remove("error");
 	}

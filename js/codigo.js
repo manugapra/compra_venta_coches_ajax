@@ -50,6 +50,25 @@ $("#mensaje").empty();
     
 }
 
+$('#btnEliminarProveedor').click(cargaEliminarProveedor);
+function cargaEliminarProveedor()
+{
+
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#formEliminarProv')").hide("normal");
+
+	$("<div>").appendTo('#formularios').load("eliminarProveedor/frmEliminarProveedor.html",
+	function() {
+		$.getScript("eliminarProveedor/eliminarProveedor.js");
+		$('#formEliminarProv').show("normal");
+	});
+
+$("#mensaje").empty();
+
+    
+}
+
 $('#btnAltaEmpleado').click(cargaAltaEmpleado);
 
 function cargaAltaEmpleado()
@@ -166,7 +185,7 @@ function cargaEditarCliente()
 $('#btnRegistrarVenta').click(cargaRegistrarVenta);
 
 function cargaRegistrarVenta()
-{
+{	
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
     $("form:not('#formRegVenta')").hide("normal");
@@ -174,6 +193,7 @@ function cargaRegistrarVenta()
 
     	$("<div>").appendTo('#formularios').load("registrarVenta/frmRegistrarVenta.html",
             function() {
+
 				$.getScript("registrarVenta/registrarVenta.js");
 				$('#formRegVenta').show("normal");
             });

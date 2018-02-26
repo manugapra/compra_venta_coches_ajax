@@ -100,7 +100,7 @@ function validarAltaVeh(oEvento)
 		formAltaVeh.matVehiculo.classList.add('error');
 		formAltaVeh.matVehiculo.focus();
 		bValido = false;
-		sError = 'Matricula incorrecta. Debe ser 4 numeros y 3 letras. Esta basado en el formato actual (Empezando por la letra B). Ejemplo : 2341KJD \n';
+		sError = 'Matricula incorrecta. Debe ser 4 numeros y 3 letras. Esta basado en el formato actual (Empezando por la letra B). Ejemplo : 2341KJD.<br>';
 	}
 	else
 		formAltaVeh.matVehiculo.classList.remove('error');
@@ -115,7 +115,7 @@ function validarAltaVeh(oEvento)
 		formAltaVeh.marcaVehiculo.classList.add('error');
 		formAltaVeh.marcaVehiculo.focus();
 		bValido = false;
-		sError += 'Introduzca una marca \n';
+		sError += 'Introduzca una marca.<br>';
 	}
 	else
 		formAltaVeh.marcaVehiculo.classList.remove('error');
@@ -130,7 +130,7 @@ function validarAltaVeh(oEvento)
 		formAltaVeh.modVehiculo.classList.add('error');
 		formAltaVeh.modVehiculo.focus();
 		bValido = false;
-		sError += 'Introduzca un modelo \n';
+		sError += 'Introduzca un modelo.<br>';
 	}
 	else
 		formAltaVeh.modVehiculo.classList.remove('error');
@@ -145,7 +145,7 @@ function validarAltaVeh(oEvento)
 		formAltaVeh.tasVehiculo.classList.add('error');
 		formAltaVeh.tasVehiculo.focus();
 		bValido = false;
-		sError += 'Debe introducir una cantidad valida \n';
+		sError += 'Debe introducir una cantidad valida.<br>';
 	}
 	else
 		formAltaVeh.tasVehiculo.classList.remove('error');
@@ -160,7 +160,7 @@ function validarAltaVeh(oEvento)
 		formAltaVeh.combVehiculo.classList.add('error');
 		formAltaVeh.combVehiculo.focus();
 		bValido = false;
-		sError += 'El combustible solo puede ser Diesel o Gasolina \n';
+		sError += 'El combustible solo puede ser Diesel o Gasolina.<br>';
 	}
 	else
 		formAltaVeh.combVehiculo.classList.remove('error');
@@ -175,7 +175,7 @@ function validarAltaVeh(oEvento)
 		formAltaVeh.plazasVehiculo.classList.add('error');
 		formAltaVeh.plazasVehiculo.focus();
 		bValido = false;
-		sError += 'Los vehiculos pueden tener 2,4,5,6,7 o 8 plazas \n';
+		sError += 'Los vehiculos pueden tener 2,4,5,6,7 o 8 plazas.<br>';
 	}
 	else
 		formAltaVeh.plazasVehiculo.classList.remove('error');
@@ -200,7 +200,7 @@ function validarAltaVeh(oEvento)
 	{
 		formAltaVeh.querySelector('.radio').classList.add('error');
 		bValido=false;
-		sError += 'Debe elegir un tipo de vehiculo \n';
+		sError += 'Debe elegir un tipo de vehiculo.<br>';
 	}
 	else
 	{
@@ -218,7 +218,7 @@ function validarAltaVeh(oEvento)
 				formAltaVeh.nPuertasCoche.classList.add('error');
 				formAltaVeh.nPuertasCoche.focus();
 				bValido = false;
-				sError += 'Los vehiculos pueden 3 o 5 puertas \n';
+				sError += 'Los vehiculos pueden 3 o 5 puertas.<br>';
 			}
 			else
 				formAltaVeh.nPuertasCoche.classList.remove('error');	
@@ -233,7 +233,7 @@ function validarAltaVeh(oEvento)
 				formAltaVeh.tapiceriaCoche.classList.add('error');
 				formAltaVeh.tapiceriaCoche.focus();
 				bValido = false;
-				sError += 'La tapiceria puede ser cuero, tela y vinilo \n';
+				sError += 'La tapiceria puede ser cuero, tela y vinilo.<br>';
 			}
 			else
 				formAltaVeh.tapiceriaCoche.classList.remove('error');
@@ -249,7 +249,7 @@ function validarAltaVeh(oEvento)
 				formAltaVeh.tpCoche.classList.add('error');
 				formAltaVeh.tpCoche.focus();
 				bValido = false;
-				sError += 'El tipo puede ser turismo, todoterreno, monovolumen, furgoneta y berlina \n';
+				sError += 'El tipo puede ser turismo, todoterreno, monovolumen, furgoneta y berlina.<br>';
 			}
 			else
 				formAltaVeh.tpCoche.classList.remove('error');
@@ -269,7 +269,7 @@ function validarAltaVeh(oEvento)
 				formAltaVeh.cargaCamion.classList.add('error');
 				formAltaVeh.cargaCamion.focus();
 				bValido = false;
-				sError += 'Debe introducir una cantidad \n';
+				sError += 'Debe introducir una cantidad.<br>';
 			}
 			else
 				formAltaVeh.cargaCamion.classList.remove('error');
@@ -284,7 +284,7 @@ function validarAltaVeh(oEvento)
 				formAltaVeh.tipoCargaCamion.classList.add('error');
 				formAltaVeh.tipoCargaCamion.focus();
 				bValido = false;
-				sError += 'La carga puede ser valiosa, refrigerada, peligrosa, granel o remolque \n';
+				sError += 'La carga puede ser valiosa, refrigerada, peligrosa, granel o remolque.<br>';
 			}
 			else
 				formAltaVeh.tipoCargaCamion.classList.remove('error');
@@ -299,7 +299,7 @@ function validarAltaVeh(oEvento)
 				formAltaVeh.capCombCamion.classList.add('error');
 				formAltaVeh.capCombCamion.focus();
 				bValido = false;
-				sError += 'La capacidad del combustible puede ser de 500, 1000 y 1500 \n';
+				sError += 'La capacidad del combustible puede ser de 500, 1000 y 1500.';
 			}
 			else
 				formAltaVeh.capCombCamion.classList.remove('error');
@@ -309,8 +309,9 @@ function validarAltaVeh(oEvento)
 
 	if (bValido == false) 
 	{
-		alert(sError);
-		//oE.preventDefault();
+		$("#mensaje").empty();
+		$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+sError+'</div>');
+		
 		return false;
 	}
 	else

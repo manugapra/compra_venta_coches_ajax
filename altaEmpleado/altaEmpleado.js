@@ -59,7 +59,7 @@ function validarAltaEmpleado(oEvento)
 		formAltaEmpleado.dniEmp.classList.add('error');
 		formAltaEmpleado.dniEmp.focus();
 		bValido = false;
-		sError = 'El dni tiene que tener 8 cifras y una letra \n';
+		sError = 'El dni tiene que tener 8 cifras y una letra.<br>';
 	}
 	else
 		formAltaEmpleado.dniEmp.classList.remove('error');
@@ -74,7 +74,7 @@ function validarAltaEmpleado(oEvento)
 		formAltaEmpleado.nomEmp.classList.add("error");
 		formAltaEmpleado.nomEmp.focus();
 		bValido = false;
-		sError += "Escriba un nombre \n"; 
+		sError += "Escriba un nombre.<br>"; 
 	} else {
 		formAltaEmpleado.nomEmp.classList.remove("error");
 	}
@@ -106,7 +106,7 @@ function validarAltaEmpleado(oEvento)
 		formAltaEmpleado.salEmp.classList.add("error");
 		formAltaEmpleado.salEmp.focus();
 		bValido = false;
-		sError += "Introduzca el salario \n"; 
+		sError += "Introduzca el salario.<br>"; 
 	} else {
 		formAltaEmpleado.salEmp.classList.remove("error");
 	}
@@ -114,8 +114,9 @@ function validarAltaEmpleado(oEvento)
 
 	if (bValido == false) 
 	{
-		alert(sError);
-		//oE.preventDefault();
+		$("#mensaje").empty();
+		$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+sError+'</div>');
+		
 		return false;
 	} else {
 		return true;

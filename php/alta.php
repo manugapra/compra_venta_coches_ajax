@@ -138,7 +138,7 @@ if(isset($_POST["m"])){
     }
 
     if($m=="venta"){
-        $resultado=insert("INSERT INTO `venta`(`vehiculo`, `importe`, `fecha`, `cliente`, `empleado`, `comentarios`, `disponible`) VALUES ('$v',$i,'$f','$c','$e','$o','si')");
+        $resultado=insert("INSERT INTO venta(vehiculo, importe, fecha, cliente, empleado, comentarios, disponible) VALUES ('$v',$i,'$f','$c','$e','$o','si')");
         venta($v);
         if($resultado==""){
             echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Venta registrada correctamente</div>';
