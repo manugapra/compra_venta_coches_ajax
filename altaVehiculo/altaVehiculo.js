@@ -123,7 +123,7 @@ function validarAltaVeh(oEvento)
 	//campo modelo
 	var sModelo = formAltaVeh.modVehiculo.value.trim();
 	formAltaVeh.modVehiculo.value = formAltaVeh.modVehiculo.value.trim();
-	var oExpReg = /^\w{2,40}$/i;
+	var oExpReg = /^[\w\s]{2,40}$/i;
 
 	if (oExpReg.test(sModelo)==false) 
 	{

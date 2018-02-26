@@ -1,5 +1,37 @@
 $('#btnEnviarVenta').click(enviarVenta);
 
+rellenarCombos();
+function rellenarCombos()
+{
+	$.get('php/getVehiculos.php',null,comboVehiculos,'json');
+	$.get('php/getClientes.php',null,comboClientes,'json');
+	$.get('php/getEmpleados.php',null,comboEmpleados,'json');
+}
+
+function comboVehiculos(oVehiculos, sStatus, oXHR)
+{
+	$('#selectVentaVehiculo').empty();
+	jQuery.each(oVehiculos,function(i,elemento){
+		$('#selectVentaVehiculo').append('<option value="' + elemento.matricula + '" >' + elemento.matricula +'-'+elemento.marca+' '+elemento.modelo+ '</option>');
+	});
+}
+
+function comboClientes(oClientes, sStatus, oXHR)
+{
+	$('#selectVentaCliente').empty();
+	jQuery.each(oClientes,function(i,elemento){
+		$('#selectVentaCliente').append('<option value="' + elemento.dni + '" >' + elemento.nombre+' '+elemento.apellidos+ '</option>');
+	});
+}
+
+function comboEmpleados(oEmpleados, sStatus, oXHR)
+{
+	$('#selectVentaEmp').empty();
+	jQuery.each(oEmpleados,function(i,elemento){
+		$('#selectVentaEmp').append('<option value="' + elemento.dni + '" >' + elemento.nombre+' '+elemento.apellidos+ '</option>');
+	});
+}
+
 function enviarVenta()
 {
 	if (validarVenta()) 
@@ -13,20 +45,21 @@ function enviarVenta()
 		var fechaVentaVehiculo = formRegVenta.fechaVentaVehiculo.value.trim();		
 		var observVentaVehiculo = formRegVenta.observVentaVehiculo.value.trim();
 
-		var oVenta = new Venta(selectVentaVehiculo,selectVentaCliente,selectVentaEmp,importeVentaVehiculo,fechaVentaVehiculo,observVentaVehiculo);
+		$.post('php/alta.php',{m: "venta", v: selectVentaVehiculo, i: importeVentaVehiculo, f: fechaVentaVehiculo, c: selectVentaCliente, e: selectVentaEmp, o: observVentaVehiculo},
+			function (data,status){
+				if(status=="success"){
+					
+					$("#mensaje").append(data);
+					
+					formRegVenta.reset();
+					inicio();
+				} else {
+					$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Ha ocurrido un error de conexión</strong></div>')
 
-		var sMensaje = cvCoches.altaVenta(oVenta);	
-		
-		var vehiculos = cvCoches._vehiculos;
-		for (var i=0; i<vehiculos.length; i++)
-		{
-			if (vehiculos[i].matricula==selectVentaVehiculo) 
-				posCoche = i;
-		}	
-		vehiculos.splice(posCoche,1);
-			
 
-		alert(sMensaje);
+				}
+			});			
+
 		inicio();
 	}
 }
@@ -83,7 +116,7 @@ function validarVenta()
 		formRegVenta.importeVentaVehiculo.classList.remove('error');
 
 	//campo fecha
-	var dFecha = formRegVenta.fechaVentaVehiculo.value.trim();
+	/*var dFecha = formRegVenta.fechaVentaVehiculo.value.trim();
 	formRegVenta.fechaVentaVehiculo.value= formRegVenta.fechaVentaVehiculo.value.trim();
 	var oExpReg = /^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$/i;
 
@@ -95,7 +128,7 @@ function validarVenta()
 		sError += 'Debe introducir una fecha. Por ejemplo: 01/01/2018.\n';
 	}
 	else
-		formRegVenta.fechaVentaVehiculo.classList.remove('error');
+		formRegVenta.fechaVentaVehiculo.classList.remove('error');*/
 
 
 

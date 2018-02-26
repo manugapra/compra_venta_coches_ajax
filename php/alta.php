@@ -5,7 +5,7 @@ if(isset($_POST["m"])){
 
     //ALTA PROVEEDOR
     if($m=="proveedor"){
-        $resultado=insert("INSERT INTO proveedor (cif, nombre, direccion, telefono) VALUES ('$c','$n','$d',$t)");
+        $resultado=insert("INSERT INTO proveedor (cif, nombre, direccion, telefono, disponible) VALUES ('$c','$n','$d',$t,'si')");
         
         if($resultado==""){
             //Si no ha devuelto error
@@ -26,7 +26,7 @@ if(isset($_POST["m"])){
 
     //ALTA EMPLEADO
     if($m=="empleado"){
-        $resultado=insert("INSERT INTO empleados (dni, nombre, apellidos, num_ventas, salario) VALUES ('$d','$n','$a',0,$s)");
+        $resultado=insert("INSERT INTO empleados (dni, nombre, apellidos,salario, disponible) VALUES ('$d','$n','$a',$s,'si')");
         if($resultado==""){
             echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Empleado dado de alta correctamente</div>';
         } else if ($resultado!=""){
@@ -43,7 +43,7 @@ if(isset($_POST["m"])){
 
     //ALTA COCHE
     if($m=="coche"){
-        $resultado=insert("INSERT INTO vehiculos (matricula, marca, modelo, tasacion, combustible, plazas) VALUES ('$matricula','$marca','$modelo','$tasacion','$combustible','$plazas')");
+        $resultado=insert("INSERT INTO vehiculos (matricula, marca, modelo, tasacion, combustible, plazas, disponible) VALUES ('$matricula','$marca','$modelo','$tasacion','$combustible','$plazas','si')");
 
         $consultaId=cUltimoId();
 
@@ -71,7 +71,7 @@ if(isset($_POST["m"])){
 
     //ALTA CAMION
     if($m=="camion"){
-        $resultado=insert("INSERT INTO vehiculos (matricula, marca, modelo, tasacion, combustible, plazas) VALUES ('$matricula','$marca','$modelo','$tasacion','$combustible','$plazas')");
+        $resultado=insert("INSERT INTO vehiculos (matricula, marca, modelo, tasacion, combustible, plazas, disponible) VALUES ('$matricula','$marca','$modelo','$tasacion','$combustible','$plazas', 'si')");
        
 
        $consultaId=cUltimoId();
@@ -105,7 +105,7 @@ if(isset($_POST["m"])){
 
     //ALTA CLIENTE
     if($m=="cliente"){
-        $resultado=insert("INSERT INTO clientes (dni, nombre, apellidos, telefono) VALUES ('$d','$n','$a',$t)");
+        $resultado=insert("INSERT INTO clientes (dni, nombre, apellidos, telefono, disponible) VALUES ('$d','$n','$a',$t, 'si')");
         if($resultado==""){
             echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Cliente dado de alta correctamente</div>';
         } else if ($resultado!=""){
@@ -122,9 +122,26 @@ if(isset($_POST["m"])){
 
      //REGISTRAR COMPRA
      if($m=="compra"){
-        $resultado=insert("INSERT INTO compra (vehiculo, importe, fecha, proveedor, empleado, comentarios) VALUES ('$v',$i,'$f','$p','$e','$o')");
+        $resultado=insert("INSERT INTO compra (vehiculo, importe, fecha, proveedor, empleado, comentarios, disponible) VALUES ('$v',$i,'$f','$p','$e','$o', 'si')");
         if($resultado==""){
             echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Compra registrada correctamente</div>';
+        } else if ($resultado!=""){
+            
+            $errores = explode (" ", $resultado);
+            if ($errores[0]=="Duplicate"){
+                echo '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>El vehiculo seleccionado ya ha sido vendido</div>';
+            } else {
+                echo '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Ha ocurrido un error.</div>';
+            }
+        }
+      
+    }
+
+    if($m=="venta"){
+        $resultado=insert("INSERT INTO `venta`(`vehiculo`, `importe`, `fecha`, `cliente`, `empleado`, `comentarios`, `disponible`) VALUES ('$v',$i,'$f','$c','$e','$o','si')");
+        venta($v);
+        if($resultado==""){
+            echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Venta registrada correctamente</div>';
         } else if ($resultado!=""){
             
             $errores = explode (" ", $resultado);
@@ -293,5 +310,13 @@ $mysqli->close();
 
 }
 }
-      
+    
+
+  function venta($vehiculo)
+  {
+      $conexion = new mysqli('localhost','root','','coches');
+      $cadena = "UPDATE `vehiculos` SET `disponible`='no' WHERE `matricula`='".$vehiculo."'";
+      $consulta = $conexion->query($cadena);
+      $conexion->close();
+  }    
 ?>
