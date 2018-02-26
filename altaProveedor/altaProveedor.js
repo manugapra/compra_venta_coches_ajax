@@ -1,5 +1,7 @@
 $('#btnEnviarAltaProveedor').click(enviarAltaProveedor);
 
+
+
 function enviarAltaProveedor(){
 	if (validarAltaProv()){
 	var formAltaProv= document.getElementById("formAltaProv");

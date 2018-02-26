@@ -276,7 +276,7 @@ function cargaRegistrarCompra()
        $('#formRegCompra').show("normal");
 	}
 	
-	rellenarCombosCompra();
+
 
 }
 
@@ -1601,25 +1601,25 @@ function rellenarCombosCompra(){
 	//Combo proveedores
 
 	$.ajax({
-		url: './registrarCompra/rellenaCombos.php?c=prov',
+		url: './php/getProveedores.php',
 		type: 'POST', 
 		dataType: 'json',
 	})
 	.done(function(data) {
 		
-		//console.log(data);
+		console.log(data);
 		aProveedores=data;
 		existeProv=true;
 		
 		
 	})
 	.fail(function() {
-		
+		console.log("error");
 		existeProv=false;
 	});
 	
 	
-	
+	console.log(existeProv);
 	if (!existeProv){
 		$("#selectCompraProv").empty();
 		$("#selectCompraProv").append("<option>No hay proveedores dados de alta</option>");

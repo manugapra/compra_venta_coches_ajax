@@ -1,11 +1,13 @@
 $('#btnEnviarCompra').click(enviarCompra);
-
+$.get('./php/getProveedores.php',null,tratarGetProveedores,'json');
+$.get('./php/getEmpleados.php',null,tratarGetEmpleados,'json');
+$.get('./php/getVehiculos.php',null,tratarGetVehiculos,'json');
 function enviarCompra()
 {
 	if (validarCompra()) 
 	{
 		var formRegCompra= document.getElementById("formRegCompra");
-		var sMensaje = "";
+		//var sMensaje = "";
 		
 		var selectCompraVehiculo= formRegCompra.selectCompraVehiculo.value.trim();
 		var importeCompraVehiculo= formRegCompra.importeCompraVehiculo.value.trim();
@@ -14,12 +16,12 @@ function enviarCompra()
 		var selectCompraEmp= formRegCompra.selectCompraEmp.value.trim();
 		var observCompraVehiculo= formRegCompra.observCompraVehiculo.value.trim();
 		
-		var oCompra = new Compra(selectCompraVehiculo,importeCompraVehiculo,fechaCompraVehiculo,selectCompraProv,selectCompraEmp,observCompraVehiculo);
+		//var oCompra = new Compra(selectCompraVehiculo,importeCompraVehiculo,fechaCompraVehiculo,selectCompraProv,selectCompraEmp,observCompraVehiculo);
 		
-		sMensaje = cvCoches.altaCompra(oCompra);
+		//sMensaje = cvCoches.altaCompra(oCompra);
         
 
-	alert(sMensaje);
+	//alert(sMensaje);
 	inicio();
 	}
 		
@@ -69,4 +71,33 @@ function validarCompra(oEvento)
 	}
 	else
 		return true;
+}
+function tratarGetProveedores(oArrayProv, sStatus, oXHR)
+{
+	$('#selectCompraProv').empty();
+
+	jQuery.each(oArrayProv, function(i, elemento) {
+        //$('<option value="' + elemento.cif + '" >' + elemento.Nombre + '</option>').appendTo("#selectProveedor");
+        $("#selectCompraProv").append('<option value="' + elemento.cif + '" >' + elemento.nombre + '</option>');
+    });
+}
+
+function tratarGetEmpleados(oArrayProv, sStatus, oXHR)
+{
+	$('#selectCompraEmp').empty();
+
+	jQuery.each(oArrayProv, function(i, elemento) {
+        //$('<option value="' + elemento.cif + '" >' + elemento.Nombre + '</option>').appendTo("#selectProveedor");
+        $("#selectCompraEmp").append('<option value="' + elemento.dni + '" >' + elemento.nombre + ' '+elemento.apellidos+'</option>');
+    });
+}
+
+function tratarGetVehiculos(oArrayProv, sStatus, oXHR)
+{
+	$('#selectCompraVehiculo').empty();
+
+	jQuery.each(oArrayProv, function(i, elemento) {
+        //$('<option value="' + elemento.cif + '" >' + elemento.Nombre + '</option>').appendTo("#selectProveedor");
+        $("#selectCompraVehiculo").append('<option value="' + elemento.matricula + '" >' + elemento.marca + ' '+elemento.modelo+'</option>');
+    });
 }
