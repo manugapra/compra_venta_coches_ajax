@@ -69,6 +69,46 @@ $("#mensaje").empty();
     
 }
 
+
+$('#btnEliminarEmpleado').click(cargaEliminarEmpleado);
+function cargaEliminarEmpleado()
+{
+
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#formEliminarEmp')").hide("normal");
+
+	$("<div>").appendTo('#formularios').load("eliminarEmpleado/frmEliminarEmpleado.html",
+	function() {
+		$.getScript("eliminarEmpleado/eliminarEmpleado.js");
+		$('#formEliminarEmp').show("normal");
+	});
+
+$("#mensaje").empty();
+
+    
+}
+
+$('#btnEliminarVehiculo').click(cargaEliminarVehiculo);
+function cargaEliminarVehiculo()
+{
+
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#formEliminarVeh')").hide("normal");
+
+	$("<div>").appendTo('#formularios').load("eliminarVehiculo/frmEliminarVehiculo.html",
+	function() {
+		$.getScript("eliminarVehiculo/eliminarVehiculo.js");
+		$('#formEliminarVeh').show("normal");
+	});
+
+$("#mensaje").empty();
+
+    
+}
+
+
 $('#btnAltaEmpleado').click(cargaAltaEmpleado);
 
 function cargaAltaEmpleado()

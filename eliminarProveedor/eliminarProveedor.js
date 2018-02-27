@@ -1,8 +1,8 @@
-$('#btnEnviarEditarProv').click(enviarEditarProveedor);
+$('#btnEnviarEliminarProv').click(enviarEliminarProveedor);
 
 $.get('php/getProveedores.php',null,tratarGetProveedores,'json');
 
-function enviarEditarProveedor()
+function enviarEliminarProveedor()
 {
 	var proveedor = $('#selectProveedor').val();
 	if(validar()){
@@ -40,9 +40,9 @@ function validar(){
 function tratarGetProveedores(oArrayProv, sStatus, oXHR)
 {
 	$('#selectProveedor').empty();
-
+	$("#selectProveedor").append('<option value="0" >Seleccione un proveedor...</option>');
 	jQuery.each(oArrayProv, function(i, elemento) {
-        //$('<option value="' + elemento.cif + '" >' + elemento.Nombre + '</option>').appendTo("#selectProveedor");
+        
         $("#selectProveedor").append('<option value="' + elemento.cif + '" >' + elemento.nombre + '</option>')
     });
 }
