@@ -24,10 +24,6 @@ function cargaAltaProveedor()
 	  });
   
   $("#mensaje").empty();
-	
-
-
-
 }
 
 $('#btnEditarProveedor').click(cargaEditarProveedor);
@@ -343,9 +339,110 @@ function cargaEditarReparacion()
             });
 		
 		$('#mensaje').empty();
-
-  
 }
+
+
+//LISTADOS
+$('#btnListarEmpleados').click(listadoEmpleados);
+
+function listadoEmpleados()
+{
+	// Instanciar objeto Ajax
+    var oAjax = instanciarXHR();
+
+    // if (validarDatosConsulta()){ }
+    /*var oDatos = {
+        minimo: parseInt(frmConsultaAula.txtMinSillas.value.trim()),
+        maximo: parseInt(frmConsultaAula.txtMaxSillas.value.trim())
+    }*/
+
+   // var sDatos = "datos=" + JSON.stringify(oDatos);
+
+    //2. Configurar la llamada --> Asincrono por defecto
+    //oAjax.open("GET", encodeURI("consultaaula.php?" + sDatos));
+    oAjax.open("GET", encodeURI("php/getListadoEmpleados.php?"));
+
+    //3. Asociar manejador de evento de la respuesta
+    oAjax.addEventListener("readystatechange", procesoRespuestaConsulta, false);
+
+    //4. Hacer la llamada
+    oAjax.send(null);
+}
+
+function instanciarXHR() {
+            var xhttp = null;
+
+            if (window.XMLHttpRequest) {
+                xhttp = new XMLHttpRequest();
+            } else // code for IE5 and IE6
+            {
+                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            return xhttp;
+}
+
+function procesoRespuestaConsulta() {
+
+    var oAjax = this;
+
+    // 5. Proceso la respuesta cuando llega
+    if (oAjax.readyState == 4 && oAjax.status == 200) {
+
+        ///var sXML = oAjax.responseText;
+        //alert(sXML);
+
+        var oXML = oAjax.responseXML;
+
+        crearTabla(oXML);
+
+    }
+}
+
+function crearTabla(oXML) 
+{
+
+    var sTabla = '<table class="table">';
+    sTabla += '<thead><tr>';
+    sTabla += '<th>DNI</th><th>Nombre</th><th>Apellidos</th><th>Salario</th></tr></thead>';
+    sTabla += '<tbody>';
+
+    var oEmpleado = oXML.getElementsByTagName("empleado");
+
+    for (i = 0; i < oEmpleado.length; i++) {
+
+        sTabla += "<tr>";
+        sTabla += "<td>" + oEmpleado[i].getElementsByTagName("dni")[0].textContent + "</td>";
+        sTabla += "<td>" + oEmpleado[i].getElementsByTagName("nombre")[0].textContent + "</td>";
+        sTabla += "<td>" + oEmpleado[i].getElementsByTagName("apellidos")[0].textContent + "</td>";
+        sTabla += "<td>" + oEmpleado[i].getElementsByTagName("salario")[0].textContent + "</td>";
+        sTabla += "</tr>";
+    }
+
+    sTabla += "</tbody></table>";
+
+    $('#listas').html(sTabla);
+}
+
+$('#btnListarVehiculos').click(
+	function(){
+		$.get('php/getVehiculos.php',null,tratarListarVehiculos,'json');
+	});
+
+function tratarListarVehiculos(oVehiculos, sStatus, oXHR)
+{
+	$('#listas').empty();
+	var sTabla= '<table class="table">';
+	sTabla+= '<tr><th>Matricula</th><th>Marca</th><th>Modelo</th><th>Tasacion</th><th>Combustible</th><th>Plazas</th></tr>';
+	$.each(oVehiculos,function(i,elemento){
+		sTabla+='<tr><td>'+elemento.matricula+'</td><td>'+elemento.marca+'</td><td>'+elemento.modelo+'</td><td>'+elemento.tasacion+'</td><td>'+elemento.combustible+'</td><td>'+elemento.plazas+'</td></tr>';
+	});
+	 sTabla += '<table>';
+
+	$('#listas').html(sTabla);
+}
+
+
 //BOTONES PARA MOSTRAR FORMULARIOS
 
 /*var oBtnAltaProveedor= document.getElementById("btnAltaProveedor");
