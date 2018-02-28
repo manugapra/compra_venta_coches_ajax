@@ -37,6 +37,20 @@ if(isset($_POST["m"])){
 		echo true;
 		
 	}
+	//compra
+	else if ($m=='compra')
+	{
+		$cadena = "UPDATE `compra` SET `importe`=".$importe.",`comentarios`='".$comentario."' WHERE `vehiculo`='".$vehiculo."'";
+		$consulta = update($cadena);
+		echo true;	
+	}
+	//reparacion
+	else
+	{
+		$cadena = "UPDATE `reparacion` SET `desc_rep`='".$descripcion."',`coste`='".$coste."' WHERE vehiculo='".$vehiculo."'";
+		$consulta = update($cadena);
+		echo true;	
+	}
 
 }
 

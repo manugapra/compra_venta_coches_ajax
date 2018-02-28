@@ -29,6 +29,18 @@ if(isset($_GET["d"])){
 		$cadena = "SELECT * FROM `venta` WHERE `vehiculo`='".$venta."'";
 		$consulta = consulta($cadena);
 	}
+	//compra
+	else if ($d=='compra') 
+	{
+		$cadena = "SELECT * FROM `compra` WHERE `vehiculo`='".$compra."'";
+		$consulta = consulta($cadena);
+	}
+	//reparacion
+	else 
+	{
+		$cadena = "SELECT * FROM `reparacion` WHERE `vehiculo`='".$reparacion."'";
+		$consulta = consulta($cadena);
+	}
 
 }
 

@@ -1,5 +1,7 @@
 $('#btnEnviarAltaVehiculo').click(enviarAltaVehiculo);
 
+cargarComboMarcas();
+
 function enviarAltaVehiculo()
 {
 	if(validarAltaVeh())
@@ -12,7 +14,7 @@ function enviarAltaVehiculo()
 			sMensaje= "Debe Rellenar Todos los Campos.";				
 		} else{*/
 			var matVehiculo = formAltaVeh.matVehiculo.value.trim();
-			var marcaVehiculo = formAltaVeh.marcaVehiculo.value.trim();
+			var marcaVehiculo = $('#marcaVehiculo').val();
 			var modVehiculo = formAltaVeh.modVehiculo.value.trim();
 			var tasVehiculo = formAltaVeh.tasVehiculo.value.trim();
 			var combVehiculo = formAltaVeh.combVehiculo.value.trim();
@@ -83,6 +85,36 @@ oBtnTipoCoche.addEventListener("click",mostrarTipoCoche,false);
 
 var oBtnTipoCamion= document.getElementById("radioCamion");
 oBtnTipoCamion.addEventListener("click",mostrarTipoCamion,false);
+
+function cargarComboMarcas()
+{
+	$('#marcaVehiculo').empty();
+	$('#marcaVehiculo').append('<option value="">Seleccione marca...</option>');
+	var oArrayMarcas = null;
+
+	if (localStorage['marcas']!=null) 
+	{
+		oMarcas = JSON.parse(localStorage["marcas"]);
+		rellenaCombo(oMarcas);
+	}
+	else
+		$.get('php/getMarcas.php', null, tratarGetMarcas, 'json');
+}
+
+function tratarGetMarcas(oMarcas, sStatus, oXHR)
+{
+	rellenaCombo(oMarcas);
+	localStorage["marcas"] = JSON.stringify(oMarcas);
+}
+
+function rellenaCombo(oMarcas)
+{
+	$.each(oMarcas, function(i, elemento) {
+
+        $('<option value="' + elemento.marca + '" >' + elemento.marca + '</option>').appendTo("#marcaVehiculo");
+
+    });
+}
 
 function validarAltaVeh(oEvento)
 {
