@@ -37,16 +37,17 @@ function editarReparacion()
 		vehiculo: $('#vehiculoReparacion').val(),
 		coste: $('#costeReparacion').val(),
 		descripcion: $('#descripcionReparacion').val()
-	}, function(data,status)
+	}, 
+	function(data)
 	{
-		if(status=="success"){
-					
-					$("#mensaje").append(data);
-				} else {
-					$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Ha ocurrido un error de conexión</strong></div>')
-
-
-				}
+		if(data==true)
+		{	
+			$("#mensaje").append('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Se ha modificado correctamente.</strong></div>');
+		}
+		else 
+		{
+			$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>No se ha modificado.</strong></div>');
+		}
 	}, 'json');
 	$('#formEditarReparacion').hide('blind');
 	$('#formEditarReparacion2').hide('blind');

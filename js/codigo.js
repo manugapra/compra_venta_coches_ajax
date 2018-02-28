@@ -5,7 +5,7 @@ $('#btnInicio').click(inicio);
 
 function inicio()
 {
-	$("form").hide("normal");
+	$("form").hide("blind");
 	$("#mensaje").empty();
 	$("#listas").empty();
 }
@@ -16,14 +16,23 @@ $('#btnAltaProveedor').click(cargaAltaProveedor);
 function cargaAltaProveedor()
 {
 	$("#formularios").empty();
-	$("form:not('#formAltaProv')").hide("normal");
-	$("<div>").appendTo('#formularios').load("altaProveedor/frmAltaProveedor.html",
+	$("form:not('#formAltaProv')").hide("blind");
+	if ($('#formAltaProv').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("altaProveedor/frmAltaProveedor.html",
 	  function() {
 		  $.getScript("altaProveedor/altaProveedor.js");
-		  $('#formAltaProv').show("normal");
+		  $('#formAltaProv').show("blind");
+		  $("#mensaje").empty();
+		  $("#listas").empty();
 	  });
-  
-  $("#mensaje").empty();
+	}
+	else
+	{
+		$('#formAltaProv').show("blind");
+		  $("#mensaje").empty();
+		  $("#listas").empty();
+	}
 }
 
 $('#btnEditarProveedor').click(cargaEditarProveedor);
@@ -33,16 +42,23 @@ function cargaEditarProveedor()
 
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEditarProv')").hide("normal");
-
-	$("<div>").appendTo('#formularios').load("editarProveedor/frmEditarProveedor.html",
-	function() {
-		$.getScript("editarProveedor/editarProveedor.js");
-		$('#formEditarProv').show("normal");
-	});
-
-$("#mensaje").empty();
-
+    $("form:not('#formEditarProv')").hide("blind");
+    if ($('#formEditarProv').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("editarProveedor/frmEditarProveedor.html",
+		function() {
+			$.getScript("editarProveedor/editarProveedor.js");
+			$('#formEditarProv').show("blind");
+			$("#mensaje").empty();
+			$("#listas").empty();
+		});
+	}
+	else
+	{
+		$('#formEditarProv').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	}
     
 }
 
@@ -52,17 +68,23 @@ function cargaEliminarProveedor()
 
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEliminarProv')").hide("normal");
-
-	$("<div>").appendTo('#formularios').load("eliminarProveedor/frmEliminarProveedor.html",
-	function() {
-		$.getScript("eliminarProveedor/eliminarProveedor.js");
-		$('#formEliminarProv').show("normal");
-	});
-
-$("#mensaje").empty();
-
-    
+    $("form:not('#formEliminarProv')").hide("blind");
+    if ($('#formEliminarProv').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("eliminarProveedor/frmEliminarProveedor.html",
+		function() {
+			$.getScript("eliminarProveedor/eliminarProveedor.js");
+			$('#formEliminarProv').show("blind");
+			$("#mensaje").empty();
+			$("#listas").empty();
+		});
+	}
+	else
+	{
+		$('#formEliminarProv').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	}
 }
 
 
@@ -72,16 +94,23 @@ function cargaEliminarEmpleado()
 
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEliminarEmp')").hide("normal");
-
-	$("<div>").appendTo('#formularios').load("eliminarEmpleado/frmEliminarEmpleado.html",
-	function() {
-		$.getScript("eliminarEmpleado/eliminarEmpleado.js");
-		$('#formEliminarEmp').show("normal");
-	});
-
-$("#mensaje").empty();
-
+    $("form:not('#formEliminarEmp')").hide("blind");
+    if ($('#formEliminarEmp').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("eliminarEmpleado/frmEliminarEmpleado.html",
+		function() {
+			$.getScript("eliminarEmpleado/eliminarEmpleado.js");
+			$('#formEliminarEmp').show("blind");
+			$("#mensaje").empty();
+			$("#listas").empty();
+		});
+	}
+	else
+	{
+		$('#formEliminarEmp').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	}
     
 }
 
@@ -91,17 +120,23 @@ function cargaEliminarVehiculo()
 
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEliminarVeh')").hide("normal");
-
-	$("<div>").appendTo('#formularios').load("eliminarVehiculo/frmEliminarVehiculo.html",
-	function() {
-		$.getScript("eliminarVehiculo/eliminarVehiculo.js");
-		$('#formEliminarVeh').show("normal");
-	});
-
-$("#mensaje").empty();
-
-    
+    $("form:not('#formEliminarVeh')").hide("blind");
+    if ($('#formEliminarVeh').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("eliminarVehiculo/frmEliminarVehiculo.html",
+		function() {
+			$.getScript("eliminarVehiculo/eliminarVehiculo.js");
+			$('#formEliminarVeh').show("blind");
+			$("#mensaje").empty();
+			$("#listas").empty();
+		});
+	}
+	else
+	{
+		$('#formEliminarVeh').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	} 
 }
 
 
@@ -111,17 +146,23 @@ function cargaAltaEmpleado()
 {
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formAltaEmpleado')").hide("normal");
-
+    $("form:not('#formAltaEmpleado')").hide("blind");
+    if ($('#formAltaEmpleado').size()==0)
+	{
       	$("<div>").appendTo('#formularios').load("altaEmpleado/frmAltaEmpleado.html",
             function() {
 				$.getScript("altaEmpleado/altaEmpleado.js");
-				$('#formAltaEmpleado').show("normal");
+				$('#formAltaEmpleado').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
+    }
+    else
+    {
+    	$('#formAltaEmpleado').show("blind");
 		$("#mensaje").empty();
-
-  
+		$("#listas").empty();
+    }
 }
 
 $('#btnEditarEmpleado').click(cargaEditarEmpleado);
@@ -129,18 +170,23 @@ $('#btnEditarEmpleado').click(cargaEditarEmpleado);
 function cargaEditarEmpleado()
 {	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEditarEmp')").hide("normal");
-
- 
+    $("form:not('#formEditarEmp')").hide("blind");
+    if ($('#formEditarEmp').size()==0)
+	{ 
     	$("<div>").appendTo('#formularios').load("editarEmpleado/frmEditarEmpleado.html",
             function() {
 				$.getScript("editarEmpleado/editarEmpleado.js");
-				$('#formEditarEmp').show("normal");
+				$('#formEditarEmp').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
-		$('#mensaje').empty();
-
-    
+    }
+    else
+    {
+    	$('#formEditarEmp').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+    }
 }
 
 $('#btnAltaVehiculo').click(cargaAltaVehiculo);
@@ -149,16 +195,23 @@ function cargaAltaVehiculo()
 {
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formAltaVeh')").hide("normal");
-
-   
+    $("form:not('#formAltaVeh')").hide("blind");
+    if ($('#formAltaVeh').size()==0)
+	{    
     	$("<div>").appendTo('#formularios').load("altaVehiculo/frmAltaVehiculo.html",
             function() {
 				$.getScript("altaVehiculo/altaVehiculo.js");
-				$('#formAltaVeh').show("normal");
+				$('#formAltaVeh').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
+	}
+	else
+	{
+		$('#formAltaVeh').show("blind");
 		$("#mensaje").empty();
+		$("#listas").empty();
+	}
 
    
 
@@ -170,18 +223,24 @@ function cargaEditarVehiculo()
 {
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEditarVeh')").hide("normal");
-
-   
+    $("form:not('#formEditarVeh')").hide("blind");
+    if ($('#formEditarVeh').size()==0)
+	{     
     	$("<div>").appendTo('#formularios').load("editarVehiculo/frmEditarVehiculo.html",
             function() {
 				$.getScript("editarVehiculo/editarVehiculo.js");
-				$('#formEditarVeh').show("normal");
+				$('#formEditarVeh').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
-		$('#mensaje').empty();
-
-   
+    }
+    else
+    {
+		$('#formEditarVeh').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+    }
+  
 }
 
 
@@ -190,15 +249,24 @@ $('#btnAltaCliente').click(cargaAltaCliente);
 function cargaAltaCliente()
 {
 	$("#formularios").empty();
-	$("form:not('#formAltaClienteVenta')").hide("normal");
+	$("form:not('#formAltaCli')").hide("blind");
 	//$("#formularios").empty();
+	if ($('#formAltaCli').size()==0)
+	{ 
       	$("<div>").appendTo('#formularios').load("altaCliente/frmAltaCliente.html",
             function() {
 				$.getScript("altaCliente/altaCliente.js");
-				$('#formAltaCli').show("normal");
+				$('#formAltaCli').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
+    }
+    else
+    {
+    	$('#formAltaCli').show("blind");
 		$("#mensaje").empty();
+		$("#listas").empty();
+    }
 }
 
 $('#btnEditarCliente').click(cargaEditarCliente);
@@ -206,12 +274,23 @@ $('#btnEditarCliente').click(cargaEditarCliente);
 function cargaEditarCliente()
 {
 	$("#formularios").empty();
-	$("form:not('#formEditarCli')").hide("normal");
-	$("<div>").appendTo('#formularios').load("editarCliente/frmEditarCliente.html",
-	  function() {
-		  $.getScript("editarCliente/editarCliente.js");
-		  $('#formEditarCli').show("normal");
-	  });
+	$("form:not('#formEditarCli')").hide("blind");
+	if ($('#formEditarCli').size()==0)
+	{ 
+		$("<div>").appendTo('#formularios').load("editarCliente/frmEditarCliente.html",
+		  function() {
+			  $.getScript("editarCliente/editarCliente.js");
+			  $('#formEditarCli').show("blind");
+			  $("#mensaje").empty();
+			  $("#listas").empty();
+		  });
+	}
+	else
+	{
+		$('#formEditarCli').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	}
   
   $("#mensaje").empty();
 	
@@ -224,20 +303,24 @@ function cargaRegistrarVenta()
 {	
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formRegVenta')").hide("normal");
-
-
+    $("form:not('#formRegVenta')").hide("blind");
+    if ($('#formRegVenta').size()==0)
+	{ 
     	$("<div>").appendTo('#formularios').load("registrarVenta/frmRegistrarVenta.html",
             function() {
 
 				$.getScript("registrarVenta/registrarVenta.js");
-				$('#formRegVenta').show("normal");
+				$('#formRegVenta').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
+    }
+    else
+    {
+    	$('#formRegVenta').show("blind");
 		$("#mensaje").empty();
-
-   
-
+		$("#listas").empty();
+    }
 }
 
 $('#btnEditarVenta').click(cargaEditarVenta);
@@ -246,18 +329,25 @@ function cargaEditarVenta()
 {
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEditarVenta')").hide("normal");
-
+    $("form:not('#formEditarVenta')").hide("blind");
+    if ($('#formEditarVenta').size()==0)
+	{ 
   
     	$("<div>").appendTo('#formularios').load("editarVenta/frmEditarVenta.html",
             function() {
 				$.getScript("editarVenta/editarVenta.js");
-				$('#formEditarVenta').show("normal");
+				$('#formEditarVenta').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
-		$('#mensaje').empty();
-
-    
+    }
+    else
+    {
+    	$('#formEditarVenta').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+    }
+		    
 }
 
 
@@ -269,19 +359,26 @@ function cargaRegistrarCompra()
 
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formRegCompra')").hide("normal");
-
+    $("form:not('#formRegCompra')").hide("blind");
+	if ($('#formRegCompra').size()==0)
+	{
   
     	$("<div>").appendTo('#formularios').load("registrarCompra/frmRegistrarCompra.html",
             function() {
 				$.getScript("registrarCompra/registrarCompra.js");
-				$('#formRegCompra').show("normal");
+				$('#formRegCompra').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
 				
             });
-    	
-		$('#mensaje').empty();
+    }
+    else
+    {
+    	$('#formRegCompra').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
 
-	
+    }
 }
 
 $('#btnEditarCompra').click(cargaEditarCompra);
@@ -290,18 +387,24 @@ function cargaEditarCompra()
 {
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEditarCompra')").hide("normal");
-
+    $("form:not('#formEditarCompra')").hide("blind");
+    if ($('#formEditarCompra').size()==0)
+	{
   
     	$("<div>").appendTo('#formularios').load("editarCompra/frmEditarCompra.html",
             function() {
 				$.getScript("editarCompra/editarCompra.js");
-				$('#formEditarCompra').show("normal");
+				$('#formEditarCompra').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
-		$('#mensaje').empty();
-
-   
+    }
+    else
+    {
+    	$('#formEditarCompra').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+    }   
 }
 
 $('#btnRegistrarReparacion').click(cargaRegistrarReparacion);
@@ -310,15 +413,24 @@ function cargaRegistrarReparacion()
 {
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formRegReparacion')").hide("normal");
-
+    $("form:not('#formRegReparacion')").hide("blind");
+    if ($('#formRegReparacion').size()==0)
+	{
   
     	$("<div>").appendTo('#formularios').load("registrarReparacion/frmRegistrarReparacion.html",
             function() {
 				$.getScript("registrarReparacion/registrarReparacion.js");
-				$('#formRegReparacion').show("normal");
+				$('#formRegReparacion').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-			$('#mensaje').empty();
+    }
+    else
+    {
+    	$('#formRegReparacion').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+    }
 
     
 
@@ -330,15 +442,23 @@ function cargaEditarReparacion()
 {
 	$("#formularios").empty();
 	// Oculto todos los formularios menos este
-    $("form:not('#formEditarReparacion')").hide("normal");
-
+    $("form:not('#formEditarReparacion')").hide("blind");
+    if ($('#formEditarReparacion').size()==0)
+	{
        	$("<div>").appendTo('#formularios').load("editarReparacion/frmEditarReparacion.html",
             function() {
 				$.getScript("editarReparacion/editarReparacion.js");
-				$('#formEditarReparacion').show("normal");
+				$('#formEditarReparacion').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
             });
-		
-		$('#mensaje').empty();
+    }
+    else
+    {
+    	$('#formEditarReparacion').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+    }
 }
 
 
@@ -347,6 +467,7 @@ $('#btnListarEmpleados').click(listadoEmpleados);
 
 function listadoEmpleados()
 {
+	$('#formularios').empty();
 	// Instanciar objeto Ajax
     var oAjax = instanciarXHR();
 
@@ -431,6 +552,7 @@ $('#btnListarVehiculos').click(
 
 function tratarListarVehiculos(oVehiculos, sStatus, oXHR)
 {
+	$('#formularios').empty();
 	$('#listas').empty();
 	var sTabla= '<table class="table">';
 	sTabla+= '<tr><th>Matricula</th><th>Marca</th><th>Modelo</th><th>Tasacion</th><th>Combustible</th><th>Plazas</th></tr>';
