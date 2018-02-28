@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-02-2018 a las 17:49:55
+-- Tiempo de generación: 28-02-2018 a las 10:17:04
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -57,6 +57,7 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`dni`, `nombre`, `apellidos`, `telefono`, `disponible`) VALUES
 ('65478123G', 'manuel', 'pedraza', 678954123, 'si'),
+('65897412Z', 'juan', 'pozo carrera', 698574123, 'si'),
 ('98564132Z', 'ana', 'rosales', 789546123, 'si');
 
 -- --------------------------------------------------------
@@ -78,7 +79,8 @@ CREATE TABLE `coche` (
 
 INSERT INTO `coche` (`num_puertas`, `tapiceria`, `tipocoche`, `id`) VALUES
 (5, 'cuero', 'turismo', 1),
-(5, 'tela', 'turismo', 2);
+(5, 'tela', 'turismo', 2),
+(5, 'cuero', 'turismo', 3);
 
 -- --------------------------------------------------------
 
@@ -95,6 +97,13 @@ CREATE TABLE `compra` (
   `comentarios` text NOT NULL,
   `disponible` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`vehiculo`, `importe`, `fecha`, `proveedor`, `empleado`, `comentarios`, `disponible`) VALUES
+('1234BFG', 4000, '2018-02-26', 'A12345678', '21345678B', ' ', 'si');
 
 -- --------------------------------------------------------
 
@@ -116,7 +125,33 @@ CREATE TABLE `empleados` (
 
 INSERT INTO `empleados` (`dni`, `nombre`, `apellidos`, `salario`, `disponible`) VALUES
 ('12345678A', 'diego', 'gonzalez', 1500, 'si'),
-('21345678B', 'fabian', 'alfaro', 1250, 'si');
+('21345678B', 'fabian', 'alfaro', 1250, 'si'),
+('21356478G', 'maria', 'marquez', 1400, 'si');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `marcas`
+--
+
+CREATE TABLE `marcas` (
+  `id` int(10) NOT NULL,
+  `marca` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `marcas`
+--
+
+INSERT INTO `marcas` (`id`, `marca`) VALUES
+(1, 'seat'),
+(2, 'mercedes'),
+(3, 'audi'),
+(4, 'bmw'),
+(5, 'citroen'),
+(6, 'renault'),
+(7, 'toyota'),
+(8, 'volkswagen');
 
 -- --------------------------------------------------------
 
@@ -138,7 +173,8 @@ CREATE TABLE `proveedor` (
 
 INSERT INTO `proveedor` (`cif`, `nombre`, `direccion`, `telefono`, `disponible`) VALUES
 ('A12345678', 'luis', 'dos hermanas', 765468534, 'si'),
-('B12345678', 'antonio', 'alcala de guadaira', 678945123, 'si');
+('B12345678', 'antonio', 'alcala de guadaira', 678945123, 'si'),
+('L32165478', 'paco', 'sevilla', 698754123, 'si');
 
 -- --------------------------------------------------------
 
@@ -175,8 +211,9 @@ CREATE TABLE `vehiculos` (
 --
 
 INSERT INTO `vehiculos` (`matricula`, `marca`, `modelo`, `tasacion`, `combustible`, `plazas`, `id_v`, `disponible`) VALUES
-('1234BFG', 'seat', 'leon', 5000, 'diesel', 5, 1, 'si'),
-('2413JGF', 'skoda', 'fabia', 3200, 'diesel', 5, 2, 'si');
+('1234BFG', 'seat', 'leon', 5000, 'diesel', 5, 1, 'no'),
+('2413JGF', 'skoda', 'fabia', 3300, 'diesel', 5, 2, 'si'),
+('5689KGJ', 'mercedes', 'clase a', 12000, 'gasolina', 5, 3, 'si');
 
 -- --------------------------------------------------------
 
@@ -193,6 +230,13 @@ CREATE TABLE `venta` (
   `comentarios` text NOT NULL,
   `disponible` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `venta`
+--
+
+INSERT INTO `venta` (`vehiculo`, `importe`, `fecha`, `cliente`, `empleado`, `comentarios`, `disponible`) VALUES
+('1234BFG', 5000, '2018-02-26', '65478123G', '12345678A', '', 'si');
 
 --
 -- Índices para tablas volcadas
@@ -231,6 +275,12 @@ ALTER TABLE `empleados`
   ADD PRIMARY KEY (`dni`);
 
 --
+-- Indices de la tabla `marcas`
+--
+ALTER TABLE `marcas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
@@ -262,10 +312,16 @@ ALTER TABLE `venta`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `marcas`
+--
+ALTER TABLE `marcas`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id_v` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_v` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
