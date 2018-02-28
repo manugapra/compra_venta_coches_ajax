@@ -665,6 +665,101 @@ function tratarListarVehiculos(oVehiculos, sStatus, oXHR)
 	$('#listas').html(sTabla);
 }
 
+$('#btnListarProveedores').click(
+	function(){
+		$.get('php/getProveedores.php',null,tratarListarProveedores,'json');
+	});
+
+function tratarListarProveedores(oProveedor, sStatus, oXHR)
+{
+	$('#formularios').empty();
+	$('#listas').empty();
+	var sTabla= '<table class="table">';
+	sTabla+= '<tr><th>CIF</th><th>Nombre</th><th>Direccion</th><th>Telefono</th></tr>';
+	$.each(oProveedor,function(i,elemento){
+		sTabla+='<tr><td>'+elemento.cif+'</td><td>'+elemento.nombre+'</td><td>'+elemento.direccion+'</td><td>'+elemento.telefono+'</td></tr>';
+	});
+	 sTabla += '<table>';
+
+	$('#listas').html(sTabla);
+}
+
+$('#btnListarClientes').click(
+	function(){
+		$.get('php/getClientes.php',null,tratarListarClientes,'json');
+	});
+
+function tratarListarClientes(oCliente, sStatus, oXHR)
+{
+	$('#formularios').empty();
+	$('#listas').empty();
+	var sTabla= '<table class="table">';
+	sTabla+= '<tr><th>DNI</th><th>Nombre</th><th>Apellidos</th><th>Telefono</th></tr>';
+	$.each(oCliente,function(i,elemento){
+		sTabla+='<tr><td>'+elemento.dni+'</td><td>'+elemento.nombre+'</td><td>'+elemento.apellidos+'</td><td>'+elemento.telefono+'</td></tr>';
+	});
+	 sTabla += '<table>';
+
+	$('#listas').html(sTabla);
+}
+
+$('#btnListarVentas').click(
+	function(){
+		$.get('php/getVentas.php',null,tratarListarVentas,'json');
+	});
+
+function tratarListarVentas(oVenta, sStatus, oXHR)
+{
+	$('#formularios').empty();
+	$('#listas').empty();
+	var sTabla= '<table class="table">';
+	sTabla+= '<tr><th>Vehiculo</th><th>Importe</th><th>Fecha</th><th>Cliente</th><th>Empleado</th><th>Comentarios</th></tr>';
+	$.each(oVenta,function(i,elemento){
+		sTabla+='<tr><td>'+elemento.vehiculo+'</td><td>'+elemento.importe+'</td><td>'+elemento.fecha+'</td><td>'+elemento.cliente+'</td><td>'+elemento.empleado+'</td><td>'+elemento.comentarios+'</td></tr>';
+	});
+	 sTabla += '<table>';
+
+	$('#listas').html(sTabla);
+}
+
+$('#btnListarCompras').click(
+	function(){
+		$.get('php/getCompras.php',null,tratarListarCompras,'json');
+	});
+
+function tratarListarCompras(oCompra, sStatus, oXHR)
+{
+	$('#formularios').empty();
+	$('#listas').empty();
+	var sTabla= '<table class="table">';
+	sTabla+= '<tr><th>Vehiculo</th><th>Importe</th><th>Fecha</th><th>Proveedor</th><th>Empleado</th><th>Comentarios</th></tr>';
+	$.each(oCompra,function(i,elemento){
+		sTabla+='<tr><td>'+elemento.vehiculo+'</td><td>'+elemento.importe+'</td><td>'+elemento.fecha+'</td><td>'+elemento.proveedor+'</td><td>'+elemento.empleado+'</td><td>'+elemento.comentarios+'</td></tr>';
+	});
+	 sTabla += '<table>';
+
+	$('#listas').html(sTabla);
+
+}
+
+$('#btnListarReparaciones').click(
+	function(){
+		$.get('php/getReparaciones.php',null,tratarListarReparaciones,'json');
+	});
+
+function tratarListarReparaciones(oReparacion, sStatus, oXHR)
+{
+	$('#formularios').empty();
+	$('#listas').empty();
+	var sTabla= '<table class="table">';
+	sTabla+= '<tr><th>Vehiculo</th><th>Descripcion</th><th>Coste</th></tr>';
+	$.each(oReparacion,function(i,elemento){
+		sTabla+='<tr><td>'+elemento.vehiculo+'</td><td>'+elemento.desc_rep+'</td><td>'+elemento.coste+'</td></tr>';
+	});
+	 sTabla += '<table>';
+
+	$('#listas').html(sTabla);
+}
 
 //BOTONES PARA MOSTRAR FORMULARIOS
 
