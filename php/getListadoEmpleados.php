@@ -1,11 +1,11 @@
 <?php
 
-/*$sDatos = $_REQUEST["datos"];
+$sDatos = $_REQUEST["empleado"];
 
 $oDatos = json_decode($sDatos);
 
-$iMinimo = $oDatos->minimo;
-$iMaximo = $oDatos->maximo;*/
+$empleado = $oDatos->empleado;
+
 
 // Configuración BASE DE DATOS MYSQL
 $servidor  = "localhost";
@@ -21,7 +21,15 @@ mysqli_query( $conexion,"SET NAMES 'utf8'");
 //mysql_select_db($basedatos, $conexion) or die(mysql_error());
 
 // Consulta SQL para insertar en la bbdd
-$sql = "SELECT `dni`, `nombre`, `apellidos`, `salario` FROM `empleados` WHERE `disponible`='si'";
+if ($empleado=='todos') 
+{
+	$sql = "SELECT `dni`, `nombre`, `apellidos`, `salario` FROM `empleados` WHERE `disponible`='si'";
+}
+else
+{
+	$sql = "SELECT `dni`, `nombre`, `apellidos`, `salario` FROM `empleados` WHERE `disponible`='si' and dni='".$empleado."'";
+}
+
 
 $resultado = mysqli_query($conexion,$sql) or die(mysql_error());
 

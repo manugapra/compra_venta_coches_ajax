@@ -564,86 +564,29 @@ function cargaEditarReparacion()
 
 
 //LISTADOS
-$('#btnListarEmpleados').click(listadoEmpleados);
+$('#btnListarEmpleados').click(cargarListarEmpleados);
 
-function listadoEmpleados()
+function cargarListarEmpleados()
 {
-	$('#formularios').empty();
-	// Instanciar objeto Ajax
-    var oAjax = instanciarXHR();
-
-    // if (validarDatosConsulta()){ }
-    /*var oDatos = {
-        minimo: parseInt(frmConsultaAula.txtMinSillas.value.trim()),
-        maximo: parseInt(frmConsultaAula.txtMaxSillas.value.trim())
-    }*/
-
-   // var sDatos = "datos=" + JSON.stringify(oDatos);
-
-    //2. Configurar la llamada --> Asincrono por defecto
-    //oAjax.open("GET", encodeURI("consultaaula.php?" + sDatos));
-    oAjax.open("GET", encodeURI("php/getListadoEmpleados.php?"));
-
-    //3. Asociar manejador de evento de la respuesta
-    oAjax.addEventListener("readystatechange", procesoRespuestaConsulta, false);
-
-    //4. Hacer la llamada
-    oAjax.send(null);
-}
-
-function instanciarXHR() {
-            var xhttp = null;
-
-            if (window.XMLHttpRequest) {
-                xhttp = new XMLHttpRequest();
-            } else // code for IE5 and IE6
-            {
-                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-
-            return xhttp;
-}
-
-function procesoRespuestaConsulta() {
-
-    var oAjax = this;
-
-    // 5. Proceso la respuesta cuando llega
-    if (oAjax.readyState == 4 && oAjax.status == 200) {
-
-        ///var sXML = oAjax.responseText;
-        //alert(sXML);
-
-        var oXML = oAjax.responseXML;
-
-        crearTabla(oXML);
-
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#frmListarEmpleado')").hide("blind");
+    if ($('#frmListarEmpleado').size()==0)
+	{
+       	$("<div>").appendTo('#formularios').load("listarEmpleado/frmListarEmpleado.html",
+            function() {
+				$.getScript("listarEmpleado/listarEmpleado.js");
+				$('#frmListarEmpleado').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
+            });
     }
-}
-
-function crearTabla(oXML) 
-{
-
-    var sTabla = '<table class="table">';
-    sTabla += '<thead><tr>';
-    sTabla += '<th>DNI</th><th>Nombre</th><th>Apellidos</th><th>Salario</th></tr></thead>';
-    sTabla += '<tbody>';
-
-    var oEmpleado = oXML.getElementsByTagName("empleado");
-
-    for (i = 0; i < oEmpleado.length; i++) {
-
-        sTabla += "<tr>";
-        sTabla += "<td>" + oEmpleado[i].getElementsByTagName("dni")[0].textContent + "</td>";
-        sTabla += "<td>" + oEmpleado[i].getElementsByTagName("nombre")[0].textContent + "</td>";
-        sTabla += "<td>" + oEmpleado[i].getElementsByTagName("apellidos")[0].textContent + "</td>";
-        sTabla += "<td>" + oEmpleado[i].getElementsByTagName("salario")[0].textContent + "</td>";
-        sTabla += "</tr>";
+    else
+    {
+    	$('#frmListarEmpleado').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
     }
-
-    sTabla += "</tbody></table>";
-
-    $('#listas').html(sTabla);
 }
 
 $('#btnListarVehiculos').click(
@@ -665,43 +608,58 @@ function tratarListarVehiculos(oVehiculos, sStatus, oXHR)
 	$('#listas').html(sTabla);
 }
 
-$('#btnListarProveedores').click(
-	function(){
-		$.get('php/getProveedores.php',null,tratarListarProveedores,'json');
-	});
+$('#btnListarProveedores').click(cargarListarProveedores);
 
-function tratarListarProveedores(oProveedor, sStatus, oXHR)
+function cargarListarProveedores()
 {
-	$('#formularios').empty();
-	$('#listas').empty();
-	var sTabla= '<table class="table">';
-	sTabla+= '<tr><th>CIF</th><th>Nombre</th><th>Direccion</th><th>Telefono</th></tr>';
-	$.each(oProveedor,function(i,elemento){
-		sTabla+='<tr><td>'+elemento.cif+'</td><td>'+elemento.nombre+'</td><td>'+elemento.direccion+'</td><td>'+elemento.telefono+'</td></tr>';
-	});
-	 sTabla += '<table>';
-
-	$('#listas').html(sTabla);
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#frmListarProveedor')").hide("blind");
+    if ($('#frmListarProveedor').size()==0)
+	{
+       	$("<div>").appendTo('#formularios').load("listarProveedor/frmListarProveedor.html",
+            function() {
+				$.getScript("listarProveedor/listarProveedor.js");
+				$('#frmListarProveedor').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
+            });
+    }
+    else
+    {
+    	$('#frmListarEmpleado').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+    }
 }
 
-$('#btnListarClientes').click(
-	function(){
-		$.get('php/getClientes.php',null,tratarListarClientes,'json');
-	});
 
-function tratarListarClientes(oCliente, sStatus, oXHR)
+
+$('#btnListarClientes').click(cargarListarClientes);
+
+function cargarListarClientes()
 {
-	$('#formularios').empty();
-	$('#listas').empty();
-	var sTabla= '<table class="table">';
-	sTabla+= '<tr><th>DNI</th><th>Nombre</th><th>Apellidos</th><th>Telefono</th></tr>';
-	$.each(oCliente,function(i,elemento){
-		sTabla+='<tr><td>'+elemento.dni+'</td><td>'+elemento.nombre+'</td><td>'+elemento.apellidos+'</td><td>'+elemento.telefono+'</td></tr>';
-	});
-	 sTabla += '<table>';
-
-	$('#listas').html(sTabla);
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#frmListarCliente')").hide("blind");
+    if ($('#frmListarCliente').size()==0)
+	{
+       	$("<div>").appendTo('#formularios').load("listarCliente/frmListarCliente.html",
+            function() {
+				$.getScript("listarCliente/listarCliente.js");
+				$('#frmListarCliente').show("blind");
+				$("#mensaje").empty();
+				$("#listas").empty();
+            });
+    }
+    else
+    {
+    	$('#frmListarEmpleado').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+    }
 }
+
 
 $('#btnListarVentas').click(
 	function(){
