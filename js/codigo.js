@@ -139,6 +139,107 @@ function cargaEliminarVehiculo()
 	} 
 }
 
+$('#btnEliminarCliente').click(cargaEliminarCliente);
+function cargaEliminarCliente()
+{
+
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#formEliminarCli')").hide("blind");
+    if ($('#formEliminarCli').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("eliminarCliente/frmEliminarCliente.html",
+		function() {
+			$.getScript("eliminarCliente/eliminarCliente.js");
+			$('#formEliminarCli').show("blind");
+			$("#mensaje").empty();
+			$("#listas").empty();
+		});
+	}
+	else
+	{
+		$('#formEliminarCli').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	} 
+}
+
+$('#btnEliminarVenta').click(cargaEliminarVenta);
+function cargaEliminarVenta()
+{
+
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#formEliminarVenta')").hide("blind");
+    if ($('#formEliminarVenta').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("eliminarVenta/frmEliminarVenta.html",
+		function() {
+			$.getScript("eliminarVenta/eliminarVenta.js");
+			$('#formEliminarVenta').show("blind");
+			$("#mensaje").empty();
+			$("#listas").empty();
+		});
+	}
+	else
+	{
+		$('#formEliminarVenta').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	} 
+}
+
+
+$('#btnEliminarCompra').click(cargaEliminarCompra);
+function cargaEliminarCompra()
+{
+
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#formEliminarCompra')").hide("blind");
+    if ($('#formEliminarCompra').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("eliminarCompra/frmEliminarCompra.html",
+		function() {
+			$.getScript("eliminarCompra/eliminarCompra.js");
+			$('#formEliminarCompra').show("blind");
+			$("#mensaje").empty();
+			$("#listas").empty();
+		});
+	}
+	else
+	{
+		$('#formEliminarCompra').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	} 
+}
+
+$('#btnEliminarReparacion').click(cargaEliminarReparacion);
+function cargaEliminarReparacion()
+{
+
+	$("#formularios").empty();
+	// Oculto todos los formularios menos este
+    $("form:not('#formEliminarReparacion')").hide("blind");
+    if ($('#formEliminarReparacion').size()==0)
+	{
+		$("<div>").appendTo('#formularios').load("eliminarReparacion/frmEliminarReparacion.html",
+		function() {
+			$.getScript("eliminarReparacion/eliminarReparacion.js");
+			$('#formEliminarReparacion').show("blind");
+			$("#mensaje").empty();
+			$("#listas").empty();
+		});
+	}
+	else
+	{
+		$('#formEliminarReparacion').show("blind");
+		$("#mensaje").empty();
+		$("#listas").empty();
+	} 
+}
+
 
 $('#btnAltaEmpleado').click(cargaAltaEmpleado);
 
@@ -1992,7 +2093,7 @@ function rellenarCombosVenta(){
 		}
 	}	
 }
-
+/*
 function rellenarCombosReparacion(){
 	var formRegRep = document.getElementById("formRegReparacion");
 
@@ -2011,7 +2112,7 @@ function rellenarCombosReparacion(){
 	} else {
 		/*for (var k=0;k<selectCompraVehiculo.length;k++){
 			selectCompraVehiculo.remove(k);
-		}*/
+		}
 
 		if ( formRegReparacion.selectRepVehiculo.hasChildNodes() )
 		{
@@ -2035,7 +2136,7 @@ function rellenarCombosReparacion(){
 	}	
 }
 
-
+*/
 
 
 //--------------VALIDACION----------------------

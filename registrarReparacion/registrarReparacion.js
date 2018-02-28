@@ -12,7 +12,7 @@ function enviarReparacion()
 		var selectVeh = formRegReparacion.selectRepVehiculo.value.trim();
 		var descVeh = formRegReparacion.descRepVehiculo.value.trim();
 
-		//var oReparacion = new Reparacion(selectVeh,descVeh,nCoste);
+		
 		$.post("./php/alta.php", {m: "reparacion", v:selectVeh, d:descVeh, c:$("#costeRepVehiculo").val()},
 			function (data,status){
 				if(status=="success"){
@@ -20,7 +20,7 @@ function enviarReparacion()
 					$("#mensaje").append(data);
 					
 					formRegReparacion.reset();
-					inicio();
+					
 				} else {
 					$("#mensaje").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Ha ocurrido un error de conexión</strong></div>')
 
@@ -31,7 +31,7 @@ function enviarReparacion()
 		
 		inicio();
 	}
-	//alert(sMensaje);
+	
 	
 }
 

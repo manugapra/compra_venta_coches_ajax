@@ -137,6 +137,7 @@ if(isset($_POST["m"])){
       
     }
 
+    //REGISTRAR VENTA
     if($m=="venta"){
         $resultado=insert("INSERT INTO venta(vehiculo, importe, fecha, cliente, empleado, comentarios, disponible) VALUES ('$v',$i,'$f','$c','$e','$o','si')");
         venta($v);
@@ -153,6 +154,20 @@ if(isset($_POST["m"])){
         }
       
     }
+
+    //REGISTRAR REPARACION
+    if($m=="reparacion"){
+        $resultado=insert("INSERT INTO reparacion(vehiculo, desc_rep, coste, disponible) VALUES ('$v','$d',$c,'si')");
+       
+        if($resultado==""){
+            echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Reparación registrada correctamente</div>';
+        } else {
+            
+                echo '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Ha ocurrido un error.</div>';
+            }
+        }
+      
+    
 
 }
 

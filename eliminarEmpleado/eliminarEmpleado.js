@@ -12,7 +12,7 @@ function enviarEliminarEmpleado()
 				if(status=="success"){
 					$("#mensaje").empty();
 					$("#mensaje").append(data);
-					
+					formEliminarEmp.reset();
 				
 					
 				} else {
